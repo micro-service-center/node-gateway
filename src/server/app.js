@@ -4,20 +4,30 @@ const httpProxy = require('http-proxy')
 // configurations for gateway
 const GATEWAY_CONF = require('./gateway_conf.json')
 
-let server = httpProxy.createServer((req, res, proxy) => {
-  var target = {
-    host:'myhost.com',
-    port:80
+/**
+* Process incoming request
+* @param { request } req - The incoming request object.
+* @return { judgement } - Processed result of a request  { rejected: 0, request: req, target_host: <target_host>, target_port: <target_port> }
+*/
+function judgeRequest(req) {
+  return {
+    'rejected': 0,
+    'request' : req,
+    'target_host' : 'localhost',
+    'target_port' : 9000
   }
-  let originalURL = req.url
-  var appPath = urlParser.parse(req.url).pathname.substr(1)
+}
 
-  target.host = rows[0].HOST
-  target.port = rows[0].PORT?rows[0].port:80
-  target.changeOrigin = true
-  req.url = req.url.replace(appPath, rows[0].PATH)
-  req.headers['host']= target.host
-  proxy.proxyRequest(req, res, target)
+let server = httpProxy.createServer((req, res, proxy) => {
+
+  let judgement = judgeRequest(req)
+  if (judgement.rejected) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.write('request successfully proxied to: ' + req.url + '\n' + JSON.stringify(req.headers, true, 2));
+    res.end();
+  }else{
+    proxy.web(req, res, { target :'http://localhost:9000'})
+  }
 })
 
 server.on('close', () => {
@@ -26,3 +36,10 @@ server.on('close', () => {
 })
 
 server.listen(8000)
+
+// Target Server
+http.createServer(function (req, res) {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.write('request successfully proxied!' + '\n' + JSON.stringify(req.headers, true, 2));
+  res.end();
+}).listen(9000);
