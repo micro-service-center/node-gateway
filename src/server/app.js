@@ -19,11 +19,10 @@ function judgeRequest(req) {
 }
 
 let server = httpProxy.createServer((req, res, proxy) => {
-
   let judgement = judgeRequest(req)
   if (judgement.rejected) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.write('request successfully proxied to: ' + req.url + '\n' + JSON.stringify(req.headers, true, 2));
+    res.writeHead(401, { 'Content-Type': 'application/json' });
+    res.write('request rejected' + req.url + '\n' + JSON.stringify(req.headers, true, 2));
     res.end();
   }else{
     proxy.web(req, res, { target :'http://localhost:9000'})
