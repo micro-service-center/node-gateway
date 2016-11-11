@@ -4,7 +4,8 @@
   "description": "API Gateway for Phoenix Project",
   "main": "app.js",
   "dependencies": {
-    "http-proxy": "^1.15.2"
+    "http-proxy": "^1.15.2",
+    "async": "*"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
