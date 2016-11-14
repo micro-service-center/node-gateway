@@ -1,5 +1,6 @@
 # Phoenix Gateway
 ## Quickstart
+#### Node Runtime Version 6.9.1 LTS
 #### Installation
 ```shell
 sudo npm install -g nodemon # Dev Only, auto restart

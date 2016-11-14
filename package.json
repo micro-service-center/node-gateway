@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build": "webpack --progress --colors --watch",
-    "start": "nodemon ./dist/server/app.js",
+    "start": "nodemon ./src/server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
