@@ -16,7 +16,7 @@
     "superagent": "^2.3.0"
   },
   "scripts": {
-    "build_docs": "jsdoc ./src/server/app.js",
+    "build_docs": "jsdoc -c jsdoc.conf",
     "start": "nodemon ./src/server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

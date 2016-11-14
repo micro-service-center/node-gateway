@@ -9,9 +9,9 @@ sudo npm install -g nodemon # Dev Only, auto restart
 npm install # install node packages
 ```
 
-#### Start
+#### Build Documentations
 ```shell
-npm run build # build to dist folder
+npm run build_docs # build to docs folder
 ```
 ```shell
 npm start # start server
