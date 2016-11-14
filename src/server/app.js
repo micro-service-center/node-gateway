@@ -2,8 +2,11 @@ const http = require('http')
 const httpProxy = require('http-proxy')
 const RequestValidator = require('./lib/RequestValidator')
 
+// Load Configuration File
+const GATEWAY_CONFIG = require('./gateway.json')
+
 let proxy = httpProxy.createProxyServer()
-let requestValidator = new RequestValidator({'config':'btcchina'})
+let requestValidator = new RequestValidator({ config: GATEWAY_CONFIG })
 
 // Creates the reverse proxy server
 http.createServer((req, res) => {

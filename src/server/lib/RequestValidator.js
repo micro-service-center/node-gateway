@@ -6,7 +6,7 @@ class RequestValidator {
    * @param {opt} x - Options needed for a request handler
    */
 	constructor(opt) {
-    this.request = opt.req
+		this.config = opt.config
 		// Define the default result
 		this.result = { 
 			'rejected': 0,
@@ -14,6 +14,14 @@ class RequestValidator {
 			'target_host': 'localhost',
 			'target_port': '80'
 		}
+  }
+
+  /**
+   * Get configuration key from config dictionary
+   * @param {opt} x - Options needed for a request handler
+   */
+  getConfig(key) {
+		return this.config[key]	
   }
 
   /**
@@ -30,6 +38,7 @@ class RequestValidator {
   * @return { judgement } - Processed result of a request  { rejected: 0, request: req, target_host: &lt;target_host>, target_port: &lt;target_port> }
   */
  	judgeRequest() {
+		this.result.rejected = !this.hasHeaderKey('auth_key_name')
 		return this.result	
 	}
 
@@ -58,7 +67,6 @@ class RequestValidator {
  	static initializeRedis(req) {
 		return this.result	
 	}
-
 
 }
 

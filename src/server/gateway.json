@@ -1,5 +1,5 @@
 {
-	"nodes":{
+	"nodes": {
 		"authentication":[],
 		"authorization":[],
 		"exchange":[],
@@ -8,5 +8,6 @@
 		"loan":[],
 		"deposit_withdraw":[]
 	 },
-	"exchange":{ }
+	"exchange":{ },
+	"auth_key_name": "X-Credential"
 }
