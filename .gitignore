@@ -2,7 +2,7 @@ node_modules
 .idea
 *.DS
 *.log
-.swp
+*.swp
 coverage
 npm-debug.log
 dist

@@ -16,11 +16,6 @@ module.exports = [
         devtool: '#source-map',
         context: path.join(__dirname, './src/server'),
         entry: './app.js',
-        output: {
-            path: path.join(__dirname, './dist/server'),
-            filename: 'app.js',
-            libraryTarget: 'commonjs2'
-        },
         target: 'node',
         externals: nodeModules,
         resolve: {
