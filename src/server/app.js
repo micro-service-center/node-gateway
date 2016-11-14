@@ -1,13 +1,15 @@
 const http = require('http')
 const httpProxy = require('http-proxy')
-const RequestHandler = require('./lib/RequestValidator')
+const RequestValidator = require('./lib/RequestValidator')
 
 let proxy = httpProxy.createProxyServer()
-let requestHandler = new RequestHandler({'config':'btcchina'})
+let requestValidator = new RequestValidator({'config':'btcchina'})
 
 // Creates the reverse proxy server
 http.createServer((req, res) => {
-  if (requestHandler.judgeRequest(req).rejected) {
+	// Request Handler Parses Request
+	requestValidator.parseRequest(req)
+  if (requestValidator.judgeRequest().rejected) {
     res.writeHead(401, { 'Content-Type': 'application/json' });
     res.write('request rejected' + req.url + '\n' + JSON.stringify(req.headers, true, 2));
     res.end();
