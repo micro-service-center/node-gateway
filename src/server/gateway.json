@@ -1,0 +1,12 @@
+{
+	"nodes":{
+		"authentication":[],
+		"authorization":[],
+		"exchange":[],
+		"push":[],
+		"verification_code":[],
+		"loan":[],
+		"deposit_withdraw":[]
+	 },
+	"exchange":{ }
+}
