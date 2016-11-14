@@ -13,6 +13,7 @@ class RequestHandler {
 			'target_port': '80'
 		}
   }
+
   /**
   * Process incoming request
   * @param { request } req - The incoming request object.
@@ -21,6 +22,24 @@ class RequestHandler {
  	judgeRequest(req) {
 		return this.result	
 	}
+  
+  /**
+  * Translate API AccessKey & Token to JWT
+  * @param { request } req - The incoming request object.
+  * @return { _request } - Processed Request, Header translated to JWT
+  */
+ 	toJWT(req) {
+		return this.result	
+	}
+
+  /**
+  * Initializes InMemory DB for Authorization
+  * @param { opt } options
+  */
+ 	static initializeRedis(req) {
+		return this.result	
+	}
+
 }
 
 module.exports = RequestHandler;
