@@ -21,10 +21,3 @@ http.createServer((req, res) => {
   	proxy.web(req, res, { target: 'http://localhost:9008' })
   }
 }).listen(8008)
-
-// Create the target Server
-http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' })
-  res.write('request successfully proxied to: ' + req.url + '\n' + JSON.stringify(req.headers, true, 2))
-  res.end()
-}).listen(9008)

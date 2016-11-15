@@ -23,6 +23,7 @@
   "scripts": {
     "build_docs": "jsdoc -c jsdoc.conf",
     "start": "nodemon ./src/server/app.js",
+    "start_target": "nodemon ./src/utils/target.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
