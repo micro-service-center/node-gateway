@@ -38,7 +38,13 @@ class RequestValidator {
   * @return { judgement } - Processed result of a request  { rejected: 0, request: req, target_host: &lt;target_host>, target_port: &lt;target_port> }
   */
  	judgeRequest() {
-		this.result.rejected = !this.hasHeaderKey('auth_key_name')
+		// Request with authentication header
+		if (this.hasHeaderKey('AUTH_KEY_NAME')){ 
+			// Check Authorization
+		} else {
+		// Request without authentication header
+			
+		}
 		return this.result	
 	}
 

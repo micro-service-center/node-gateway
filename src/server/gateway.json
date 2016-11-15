@@ -1,5 +1,5 @@
 {
-	"nodes": {
+	"NODES": {
 		"authentication":[],
 		"authorization":[],
 		"exchange":[],
@@ -8,6 +8,13 @@
 		"loan":[],
 		"deposit_withdraw":[]
 	 },
-	"exchange":{ },
-	"auth_key_name": "X-Credential"
+	"LOCATION":{ },
+	"AUTH_KEY_NAME": "X-Credential",
+	"AUTH_KEY_REQUIRED": [
+		"exchange",
+		"push",
+		"verification_code",
+		"loan",
+		"deposit_withdraw"
+	]
 }

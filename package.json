@@ -5,7 +5,12 @@
   "main": "app.js",
   "dependencies": {
     "http-proxy": "^1.15.2",
-    "async": "*"
+    "async": "*",
+    "compression": "*",
+    "cors": "*",
+    "debug": "*",
+    "errorhandler": "*",
+    "limiter": "*"
   },
   "devDependencies": {
 		"jsdoc": "*",
