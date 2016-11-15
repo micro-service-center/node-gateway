@@ -8,10 +8,10 @@ class BasePolicy {
 	}
 
 	/**
-	 * Judges whether a user object fits
-	 * @param {user}
+	 * Judges whether a request or user object
+	 * @param {object}
 	 */
-	static allowed(user) {
+	static allowed(object) {
 		// Throws unimplemented error
 		throw new Error('Unimplemented')
 	}
