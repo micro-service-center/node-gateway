@@ -48,6 +48,7 @@ class BaseValidator {
 				this.target = service
 			}
 		})
+		return this
 	}
 
 	/**
@@ -71,7 +72,21 @@ class BaseValidator {
 	 */
 	checkAuth()	{
 		if (this.validated) {
-			console.log(this.getTarget())
+			this.needs_auth = this.getTarget()
+				.target.needs_auth
+		}
+		return this
+	}
+
+	/**
+	 * check if request needs authentication
+	 * @param  {request}
+	 * @return {this}
+	 */
+	checkHeader()	{
+		if (this.validated) {
+			this.needs_auth = this.getTarget()
+				.target.needs_auth
 		}
 		return this
 	}
