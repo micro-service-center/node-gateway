@@ -9,7 +9,10 @@ class RequestHandler {
    */
 	constructor(opt) {
 		this.conf = opt.conf
-    this.requestValidator = new RequestValidator({conf:this.conf})
+    // Configure the Request Validator
+    this.requestValidator = new RequestValidator({
+      conf:opt.conf
+    })
 		// Define the default result
 		this.result = { 
 			'rejected': 0,
@@ -40,8 +43,12 @@ class RequestHandler {
   * @param { request } req - The incoming request object.
   * @return { judgement } - Processed result of a request  { rejected: 0, request: req, target_host: &lt;target_host>, target_port: &lt;target_port> }
   */
- 	judgeRequest() {
-    console.log(this.requestValidator.pathInServices(this.request))
+ 	validateRequest() {
+    this.requestValidator
+      .parseRequest(this.request)
+      .checkPath()
+      .checkAuth()
+      .done()
 		return this.result	
 	}
 

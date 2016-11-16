@@ -12,7 +12,7 @@ let requestHandler = new RequestHandler({ conf: GATEWAY_CONFIG })
 http.createServer((req, res) => {
 	// Request Handler Parses Request
 	requestHandler.parseRequest(req)
-  if (requestHandler.judgeRequest().rejected) {
+  if (requestHandler.validateRequest().rejected) {
     res.writeHead(401, { 'Content-Type': 'application/json' });
     res.write('request rejected' + req.url + '\n' + JSON.stringify(req.headers, true, 2));
     res.end();
