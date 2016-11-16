@@ -1,20 +1,64 @@
 {
-	"NODES": {
-		"authentication":[],
-		"authorization":[],
-		"exchange":[],
-		"push":[],
-		"verification_code":[],
-		"loan":[],
-		"deposit_withdraw":[]
-	 },
-	"LOCATION":{ },
-	"AUTH_KEY_NAME": "X-Credential",
-	"AUTH_KEY_REQUIRED": [
-		"exchange",
-		"push",
-		"verification_code",
-		"loan",
-		"deposit_withdraw"
-	]
+	"SERVICES": [
+		{
+			"name": "authentication",
+			"protocol": "http",
+			"host": "127.0.0.1",
+			"port": "8008",
+			"path": "/auth",
+			"needs_auth": false,
+			"nodes": [
+				"127.0.0.1:9008"
+			]
+		},
+		{
+			"name": "authorization",
+			"protocol": "http",
+			"host": "127.0.0.1",
+			"path": "/",
+			"needs_auth": true,
+			"nodes": []
+		},
+		{
+			"name": "exchange",
+			"protocol": "http",
+			"host": "127.0.0.1",
+			"path": "/trade",
+			"needs_auth": true,
+			"nodes": []
+		},
+		{
+			"name": "push",
+			"protocol": "http",
+			"host": "127.0.0.1",
+			"path": "/",
+			"needs_auth": true,
+			"nodes": []
+		},
+		{
+			"name": "verification_code",
+			"protocol": "http",
+			"host": "127.0.0.1",
+			"path": "/vcode",
+			"needs_auth": true,
+			"nodes": []
+		},
+		{
+			"name": "loan",
+			"protocol": "http",
+			"host": "127.0.0.1",
+			"path": "/loan",
+			"needs_auth": true,
+			"nodes": []
+		},
+		{
+			"name": "fund_access",
+			"protocol": "http",
+			"host": "127.0.0.1",
+			"path": "/fund_access",
+			"needs_auth": true,
+			"nodes": []
+		}
+  ],
+	"AUTH_KEY_NAME": "X-Credential"
 }
