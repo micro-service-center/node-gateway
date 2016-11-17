@@ -1,4 +1,4 @@
-const RequestValidator = require('./validator/Base')
+const RequestValidator = require('./validator/GatewayValidator')
 
 /** Class for Request Handler */
 class RequestHandler {
@@ -43,12 +43,23 @@ class RequestHandler {
   * @param { request } req - The incoming request object.
   * @return { judgement } - Processed result of a request  { rejected: 0, request: req, target_host: &lt;target_host>, target_port: &lt;target_port> }
   */
- 	validateRequest() {
+  handleRequest() {
+    if (this.validateRequest().validated) {
+
+    } else {
+
+    }
+  }
+
+  /**
+  * Validate incoming request
+  * @param { request } req - The incoming request object.
+  * @return { judgement } - Processed result of a request  { rejected: 0, request: req, target_host: &lt;target_host>, target_port: &lt;target_port> }
+  */
+ 	validateRequest(req) {
+    this.parseRequest(req)
     return this.requestValidator
-      .parseRequest(this.request)
-      .checkPath()
-      .checkAuthRequirement()
-      .done()
+      .validate(this.request)
 	}
 
   /**

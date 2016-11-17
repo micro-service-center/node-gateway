@@ -86,7 +86,13 @@ class BaseValidator {
 	 * @return {this}
 	 */
 	done()	{
-		return this
+		return { 
+			conf: this.conf,
+			validated: this.validated,
+			request: this.request,
+			pathRoot: this.pathRoot,
+			target: this.target
+		}
 	}
 
 	/**

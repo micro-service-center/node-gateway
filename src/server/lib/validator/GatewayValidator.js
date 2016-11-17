@@ -10,9 +10,13 @@ class GatewayValidator extends RequestValidator {
 	 *	service: {service name}
 	 * }
 	 */
-	approve(request) {
+	validate(request) {
+      return this.parseRequest(request)
+      .checkPath()
+      .checkAuthRequirement()
+      .done()
 		// Check Request Target
 	}
 }
 
-module.exports = LoginValidator;
+module.exports = GatewayValidator;

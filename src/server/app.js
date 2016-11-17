@@ -10,9 +10,9 @@ let requestHandler = new RequestHandler({ conf: GATEWAY_CONFIG })
 
 // Creates the reverse proxy server
 http.createServer((req, res) => {
-	// Request Handler Parses Request
-	requestHandler.parseRequest(req)
-  if (requestHandler.validateRequest().validated) {
+	// Request Handler Validates
+  postValidateReq = requestHandler.validateRequest(req)
+  if (postValidateReq.validated) {
     proxy.web(req, res, { target: 'http://localhost:9008' })
   	// Process the request
 	} else {
