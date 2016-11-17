@@ -12,12 +12,12 @@ let requestHandler = new RequestHandler({ conf: GATEWAY_CONFIG })
 http.createServer((req, res) => {
 	// Request Handler Parses Request
 	requestHandler.parseRequest(req)
-  if (requestHandler.validateRequest().rejected) {
+  if (requestHandler.validateRequest().validated) {
+    proxy.web(req, res, { target: 'http://localhost:9008' })
+  	// Process the request
+	} else {
     res.writeHead(401, { 'Content-Type': 'application/json' });
     res.write('request rejected' + req.url + '\n' + JSON.stringify(req.headers, true, 2));
     res.end();
-  	// Process the request
-	} else {
-  	proxy.web(req, res, { target: 'http://localhost:9008' })
   }
 }).listen(8008)

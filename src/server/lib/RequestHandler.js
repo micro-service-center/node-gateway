@@ -44,12 +44,11 @@ class RequestHandler {
   * @return { judgement } - Processed result of a request  { rejected: 0, request: req, target_host: &lt;target_host>, target_port: &lt;target_port> }
   */
  	validateRequest() {
-    this.requestValidator
+    return this.requestValidator
       .parseRequest(this.request)
       .checkPath()
-      .checkAuth()
+      .checkAuthRequirement()
       .done()
-		return this.result	
 	}
 
   /**
