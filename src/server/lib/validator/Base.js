@@ -100,15 +100,6 @@ class BaseValidator {
 	}
 
 	/**
-	 * If Request has Header
-	 * @param  {request}
-	 * @return {Boolean}
-	 */
-	static hasHeader(request)	{
-
-	}
-
-	/**
 	 * Get Pathroot from request object
 	 * @param  {request}
 	 * @return {path}
