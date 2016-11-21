@@ -4,13 +4,13 @@ class BaseError extends Error {
     this.message = opt.message;
     this.code = opt.code
     this.name = 'BaseError';
-    this.log(`Error:${this.name}:${opt.message}`)
+    this.log(`Error:${this.name}:${opt.message}:${this.code}`)
   }
 
   log(msg){
-  	console.log(msg)
+		throw new Error('Unimplemented')
   }
-  
+
 }
 
 module.exports = BaseError;
