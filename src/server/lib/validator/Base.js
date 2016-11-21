@@ -13,6 +13,9 @@ class BaseValidator {
 		this.request = null			// No Request On Init
 		this.pathRoot = null		// No pathRoot on Init
 		this.target = null
+		this.needs_auth = null  // No Auth needed by default
+		this.has_authkey = null  // No Auth needed by default
+		this.error = null
 	}
 
 	/**
@@ -60,6 +63,8 @@ class BaseValidator {
 			this.validated = BaseValidator
 				.getPathsFromConf(this.conf)
 				.indexOf(this.pathRoot) > -1
+		} else {
+
 		}
 		return this
 	}
@@ -73,9 +78,11 @@ class BaseValidator {
 		if (this.validated) {
 			// console.log(this.getTarget().target.needs_auth)
 			// console.log(BaseValidator.hasAuthKey(this.request,this.conf.AUTH_KEY_NAME))
-			this.validated = this.getTarget()
-				.target.needs_auth == BaseValidator
-				.hasAuthKey(this.request,this.conf.AUTH_KEY_NAME)
+			this.has_authkey = BaseValidator.hasAuthKey(this.request,this.conf.AUTH_KEY_NAME)
+			this.needs_auth = this.getTarget().target.needs_auth
+			if (this.needs_auth) {
+				this.validated = this.needs_auth == this.has_authkey
+			}
 		}
 		return this
 	}
@@ -91,7 +98,8 @@ class BaseValidator {
 			validated: this.validated,
 			request: this.request,
 			pathRoot: this.pathRoot,
-			target: this.target
+			target: this.target,
+			needs_auth: this.needs_auth
 		}
 	}
 

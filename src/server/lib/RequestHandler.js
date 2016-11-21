@@ -13,13 +13,6 @@ class RequestHandler {
     this.requestValidator = new RequestValidator({
       conf:opt.conf
     })
-		// Define the default result
-		this.result = { 
-			'rejected': 0,
-			'request': null,
-			'target_host': 'localhost',
-			'target_port': '80'
-		}
   }
 
   /**
@@ -43,8 +36,9 @@ class RequestHandler {
   * @param { request } req - The incoming request object.
   * @return { judgement } - Processed result of a request  { rejected: 0, request: req, target_host: &lt;target_host>, target_port: &lt;target_port> }
   */
-  handleRequest() {
-    if (this.validateRequest().validated) {
+  handleRequest(req) {
+    var postValidateReq = requestHandler.validateRequest(req)
+    if (postValidateReq.validated) {
 
     } else {
 

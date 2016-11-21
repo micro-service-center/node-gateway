@@ -13,7 +13,7 @@ http.createServer((req, res) => {
 	// Request Handler Validates
   postValidateReq = requestHandler.validateRequest(req)
   if (postValidateReq.validated) {
-    proxy.web(req, res, { target: 'http://localhost:9008' })
+    proxy.web(req, res, { target: postValidateReq.target })
   	// Process the request
 	} else {
     res.writeHead(401, { 'Content-Type': 'application/json' });
