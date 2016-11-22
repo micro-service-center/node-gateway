@@ -94,7 +94,6 @@ class BaseValidator {
 	 */
 	done()	{
 		return { 
-			conf: this.conf,
 			request: this.request,
 			pathRoot: this.pathRoot,
 			target: this.target,
