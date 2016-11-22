@@ -17,7 +17,8 @@
     "chai": "*",
     "mocha": "*",
     "should": "*",
-    "supertest": "*"
+    "supertest": "*",
+    "nock": "*"
   },
   "scripts": {
     "build_docs": "jsdoc -c jsdoc.conf",

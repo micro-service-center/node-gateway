@@ -30,5 +30,9 @@ npm start # start server
 ```
 #### Test
 ```shell
-npm test # start server
+npm test # test
 ```
+
+## Change Log
+
+Please Refer to [https://github.com/BTCChina/phoenix-gateway/releases](https://github.com/BTCChina/phoenix-gateway/releases)
