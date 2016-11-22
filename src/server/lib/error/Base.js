@@ -1,16 +1,7 @@
-class BaseError extends Error {
+class ErrorHandler {
   constructor(opt) {
-    super(opt.message);
-    this.message = opt.message;
-    this.code = opt.code
-    this.name = 'BaseError';
-    this.log(`Error:${this.name}:${opt.message}:${this.code}`)
+  	this.conf = opt.conf
   }
-
-  log(msg){
-		throw new Error('Unimplemented')
-  }
-
 }
 
-module.exports = BaseError;
+module.exports = ErrorHandler;

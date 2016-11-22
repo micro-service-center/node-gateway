@@ -1,4 +1,5 @@
 const url = require('url')
+const RequestError = require('../error/ValidatorErrorHandler')
 
 /** Class for Request Validator */
 class BaseValidator {

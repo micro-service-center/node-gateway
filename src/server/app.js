@@ -3,7 +3,7 @@ const httpProxy = require('http-proxy')
 const RequestHandler = require('./lib/RequestHandler')
 
 // Load Configuration File
-const GATEWAY_CONFIG = require('./gateway.json')
+const GATEWAY_CONFIG = require('./conf/gateway.json')
 
 let proxy = httpProxy.createProxyServer()
 let requestHandler = new RequestHandler({ conf: GATEWAY_CONFIG })
