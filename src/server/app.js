@@ -25,4 +25,4 @@ let requestHandler = new RequestHandler({
 http.createServer((req, res) => {
 	// Request Handler Validates
   requestHandler.handleRequest(req, res)
-}).listen(8006)
+}).listen(GATEWAY_CONFIG.PORT)

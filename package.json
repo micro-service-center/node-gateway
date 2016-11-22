@@ -14,17 +14,16 @@
   },
   "devDependencies": {
 		"jsdoc": "*",
-    "chai": "^3.5.0",
-    "json-loader": "^0.5.4",
-    "mocha": "^3.1.2",
-    "should": "^11.1.1",
-    "superagent": "^2.3.0"
+    "chai": "*",
+    "mocha": "*",
+    "should": "*",
+    "supertest": "*"
   },
   "scripts": {
     "build_docs": "jsdoc -c jsdoc.conf",
     "start": "nodemon ./src/server/app.js",
     "start_target": "nodemon ./src/utils/target.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",

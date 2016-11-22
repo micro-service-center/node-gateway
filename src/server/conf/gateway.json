@@ -60,5 +60,6 @@
 			"nodes": []
 		}
   ],
-	"AUTH_KEY_NAME": "X-Credential"
+	"AUTH_KEY_NAME": "X-Credential",
+	"PORT": 8001
 }
