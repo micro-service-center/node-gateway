@@ -4,11 +4,11 @@
 			"name": "authentication",
 			"protocol": "http",
 			"host": "127.0.0.1",
-			"port": "8008",
+			"port": "8006",
 			"path": "/auth",
 			"needs_auth": false,
 			"nodes": [
-				"127.0.0.1:9008"
+				"http://127.0.0.1:9008"
 			]
 		},
 		{

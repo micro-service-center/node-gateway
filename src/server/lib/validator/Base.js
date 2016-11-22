@@ -1,5 +1,5 @@
 const url = require('url')
-const RequestError = require('../error/ValidatorErrorHandler')
+const ErrorThrower = require('../error/BaseErrorThrower')
 
 /** Class for Request Validator */
 class BaseValidator {
@@ -10,13 +10,15 @@ class BaseValidator {
 	 */
 	constructor(opt) {
 		this.conf = opt.conf
-		this.validated = true		// Initialize State: true
+		this.errorThrower = new ErrorThrower({
+			conf: opt.errorConf, 
+			name: "Request Validate"
+		})
 		this.request = null			// No Request On Init
 		this.pathRoot = null		// No pathRoot on Init
 		this.target = null
 		this.needs_auth = null  // No Auth needed by default
 		this.has_authkey = null  // No Auth needed by default
-		this.error = null
 	}
 
 	/**
@@ -60,14 +62,11 @@ class BaseValidator {
 	 * @return {this}
 	 */
 	checkPath()	{
-		if (this.validated){
-			this.validated = BaseValidator
-				.getPathsFromConf(this.conf)
-				.indexOf(this.pathRoot) > -1
+		if (BaseValidator.getPathsFromConf(this.conf).indexOf(this.pathRoot) > -1) {
+			return this
 		} else {
-
+			this.errorThrower.throw("pathError")
 		}
-		return this
 	}
 
 	/**
@@ -76,13 +75,13 @@ class BaseValidator {
 	 * @return {this}
 	 */
 	checkAuthRequirement()	{
-		if (this.validated) {
 			// console.log(this.getTarget().target.needs_auth)
 			// console.log(BaseValidator.hasAuthKey(this.request,this.conf.AUTH_KEY_NAME))
-			this.has_authkey = BaseValidator.hasAuthKey(this.request,this.conf.AUTH_KEY_NAME)
-			this.needs_auth = this.getTarget().target.needs_auth
-			if (this.needs_auth) {
-				this.validated = this.needs_auth == this.has_authkey
+		this.has_authkey = BaseValidator.hasAuthKey(this.request,this.conf.AUTH_KEY_NAME)
+		this.needs_auth = this.getTarget().target.needs_auth
+		if (this.needs_auth) {
+			if(!this.needs_auth == this.has_authkey) {
+				this.errorThrower.throw("authRequirementError")
 			}
 		}
 		return this
@@ -96,7 +95,6 @@ class BaseValidator {
 	done()	{
 		return { 
 			conf: this.conf,
-			validated: this.validated,
 			request: this.request,
 			pathRoot: this.pathRoot,
 			target: this.target,

@@ -1,4 +1,5 @@
 const RequestValidator = require('./Base') 
+
 /** Class for Gateway Validator */ 
 class GatewayValidator extends RequestValidator {
 
@@ -11,7 +12,7 @@ class GatewayValidator extends RequestValidator {
 	 * }
 	 */
 	validate(request) {
-      return this.parseRequest(request)
+    return this.parseRequest(request)
       .checkPath()
       .checkAuthRequirement()
       .done()

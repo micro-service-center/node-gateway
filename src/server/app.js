@@ -4,20 +4,29 @@ const RequestHandler = require('./lib/RequestHandler')
 
 // Load Configuration File
 const GATEWAY_CONFIG = require('./conf/gateway.json')
+const ERROR_CONFIG = require('./conf/error.json')
 
-let proxy = httpProxy.createProxyServer()
-let requestHandler = new RequestHandler({ conf: GATEWAY_CONFIG })
+// Stackoverflow 21409199
+let proxy = httpProxy.createProxyServer({agent: new http.Agent()})
+
+let requestHandler = new RequestHandler({ 
+  conf: GATEWAY_CONFIG,
+  errorConf: ERROR_CONFIG
+})
 
 // Creates the reverse proxy server
 http.createServer((req, res) => {
 	// Request Handler Validates
-  postValidateReq = requestHandler.validateRequest(req)
-  if (postValidateReq.validated) {
-    proxy.web(req, res, { target: postValidateReq.target })
-  	// Process the request
-	} else {
-    res.writeHead(401, { 'Content-Type': 'application/json' });
-    res.write('request rejected' + req.url + '\n' + JSON.stringify(req.headers, true, 2));
+  try {
+    postValidateReq = requestHandler.validateRequest(req)
+    proxy.web(req, res, { target: postValidateReq.target.nodes[0] })
+  } catch(e) {
+    res.writeHead(e.error.http_status, { 'Content-Type': 'application/json' });
+    // res.write('request rejected' + req.url + '\n' + json.stringify(req.headers, true, 2));
+    res.write(JSON.stringify(
+      {"msg": `${e.name} Error`, "code": e.error.code}
+    ));
     res.end();
   }
-}).listen(8008)
+
+}).listen(8006)

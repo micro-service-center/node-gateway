@@ -11,16 +11,9 @@ class RequestHandler {
 		this.conf = opt.conf
     // Configure the Request Validator
     this.requestValidator = new RequestValidator({
-      conf:opt.conf
+      conf:opt.conf,
+      errorConf: opt.errorConf.validator.request
     })
-  }
-
-  /**
-   * Get configuration key from config dictionary
-   * @param {opt} x - Options needed for a request handler
-   */
-  getConfig(key) {
-		return this.config[key]	
   }
 
   /**
@@ -52,8 +45,7 @@ class RequestHandler {
   */
  	validateRequest(req) {
     this.parseRequest(req)
-    return this.requestValidator
-      .validate(this.request)
+    return this.requestValidator.validate(this.request)
 	}
 
   /**
