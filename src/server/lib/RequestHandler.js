@@ -1,5 +1,5 @@
-const RequestValidator = require('./validator/GatewayValidator')
-
+const http = require('http')
+const httpProxy = require('http-proxy')
 /** Class for Request Handler */
 class RequestHandler {
 
@@ -9,10 +9,11 @@ class RequestHandler {
    */
 	constructor(opt) {
 		this.conf = opt.conf
-    // Configure the Request Validator
-    this.requestValidator = new RequestValidator({
-      conf:opt.conf,
-      errorConf: opt.errorConf.validator.request
+    this.requestValidator = opt.requestValidator
+
+    // Stackoverflow #21409199
+    this.proxy = httpProxy.createProxyServer({
+      agent: new http.Agent()
     })
   }
 
@@ -27,26 +28,23 @@ class RequestHandler {
   /**
   * Process incoming request
   * @param { request } req - The incoming request object.
+  * @param { respond } res - The incoming request object.
   * @return { judgement } - Processed result of a request  { rejected: 0, request: req, target_host: &lt;target_host>, target_port: &lt;target_port> }
   */
-  handleRequest(req) {
-    var postValidateReq = requestHandler.validateRequest(req)
-    if (postValidateReq.validated) {
-
-    } else {
-
+  handleRequest(req, res) {
+    this.parseRequest(req)
+    try {
+      let postValidateReq = this.requestValidator.validate(req)
+      this.proxy.web(req, res, { target: postValidateReq.target.nodes[0] })
+    } catch(e) {
+      res.writeHead(e.error.http_status, { 'Content-Type': 'application/json' });
+      // res.write('request rejected' + req.url + '\n' + json.stringify(req.headers, true, 2));
+      res.write(JSON.stringify(
+        {"msg": `${e.name} Error`, "code": e.error.code}
+      ));
+      res.end();      
     }
   }
-
-  /**
-  * Validate incoming request
-  * @param { request } req - The incoming request object.
-  * @return { judgement } - Processed result of a request  { rejected: 0, request: req, target_host: &lt;target_host>, target_port: &lt;target_port> }
-  */
- 	validateRequest(req) {
-    this.parseRequest(req)
-    return this.requestValidator.validate(this.request)
-	}
 
   /**
   * Translate API AccessKey & Token to JWT
