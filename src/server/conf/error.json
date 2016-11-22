@@ -1,0 +1,20 @@
+{
+	"validator": {
+		"request": { 
+			"LogRoot":"",
+			"LogPath":"validator",
+			"ErrorType":{
+				"pathError": {
+					"http_status": 401,
+					"code": "0001",
+					"msg": "URL Not Found"
+				},
+				"authRequirementError": {
+					"http_status": 401,
+					"code": "0002",
+					"msg": "Invalid Request"
+				}
+			}
+		}
+	}
+}
