@@ -15,6 +15,13 @@
 					"msg": "Invalid Request"
 				}
 			}
+		},
+		"user": {
+			"LogRoot":"",
+			"LogPath":"",
+			"ErrorType":{
+				
+			}
 		}
 	}
 }

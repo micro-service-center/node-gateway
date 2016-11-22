@@ -1,8 +1,7 @@
 class BaseErrorThrower {
 	/**
 	 * Class to Throw Errors
-	 * @param  {[type]} opt [description]
-	 * @return {[type]}     [description]
+	 * @param  {object} opt with Conf and Name
 	 */
 	constructor(opt) {
 		this.conf = opt.conf

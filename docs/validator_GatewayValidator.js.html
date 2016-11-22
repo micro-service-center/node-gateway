@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: validator/GatewayValidator.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,37 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: validator/GatewayValidator.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const RequestValidator = require('./Base') 
 
+/** Class for Gateway Validator */ 
+class GatewayValidator extends RequestValidator {
 
-    <h3> </h3>
+	/**
+	 * Judges what is included in the request object
+	 * @param  {request}
+	 * @return {Object}
+	 */
+	validate(request) {
+    return this.parseRequest(request)
+      .checkPath()
+      .checkAuthRequirement()
+      .done()
+		// Check Request Target
+	}
+}
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = GatewayValidator;</code></pre>
+        </article>
+    </section>
 
 
 

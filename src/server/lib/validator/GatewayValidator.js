@@ -6,10 +6,7 @@ class GatewayValidator extends RequestValidator {
 	/**
 	 * Judges what is included in the request object
 	 * @param  {request}
-	 * @return {
-	 *	result: {Boolean} 
-	 *	service: {service name}
-	 * }
+	 * @return {Object}
 	 */
 	validate(request) {
     return this.parseRequest(request)

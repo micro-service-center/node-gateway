@@ -11,6 +11,10 @@ let requestValidator = new RequestValidator({
   errorConf: ERROR_CONFIG.validator.request
 })
 
+// let userValidator = new UserValidator({
+
+// })
+
 // Request Handler
 let requestHandler = new RequestHandler({ 
   conf: GATEWAY_CONFIG,
