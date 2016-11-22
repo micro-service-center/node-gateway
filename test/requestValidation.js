@@ -8,7 +8,7 @@ let INVALID_REDIRECT_URI = 'https://wrong.com';
 let AUTHORIZATION_ENDPOINT = '/auth';
 
 describe('Validates Request', () => {
-  it('rejects request with invalid paths', (done) => {
+  it('should reject request with invalid paths', (done) => {
     request
       .get('/user')
       .set('Accept', 'application/json')
