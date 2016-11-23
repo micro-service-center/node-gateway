@@ -47,7 +47,7 @@ describe('Validates Request', () => {
       .expect(200, done)
   })
 
-  it('should reject request with invalid auth headers', (done) => {
+  it('should reject request with invalid auth HeaderKey', (done) => {
     request
       .get('/captcha')
       .set('Accept', 'application/json')
@@ -57,7 +57,7 @@ describe('Validates Request', () => {
   })
 
 
-  it('should allow request with valid auth headers', (done) => {
+  it('should allow request with valid auth HeaderKey', (done) => {
     request
       .get('/trade')
       .set('Accept', 'application/json')
