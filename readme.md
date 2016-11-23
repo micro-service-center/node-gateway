@@ -1,4 +1,3 @@
-# Phoenix Gateway
 [![CircleCI](https://circleci.com/gh/BTCChina/phoenix-gateway/tree/dev.svg?style=shield&circle-token=45015a30fe553940bcc3267a691ce2a2a5857ae6)](https://circleci.com/gh/BTCChina/phoenix-gateway/tree/dev)
 
 ```
@@ -9,6 +8,16 @@
  / .___/_/ /_/\____/\___/_/ /_/_/_/|_|      \__, /\__,_/\__/\___/|__/|__/\__,_/\__, /  
 /_/                                        /____/                             /____/   
 ```
+
+# Phoenix Gateway
+
+Phoenix-gateway is a simple API Gateway, which performs the following tasks:
+- rejects invalid requests
+- rejects invalid users
+- redirects traffic to registered services
+- limits request frequency
+
+It is built upon the node-http-proxy project. And simply configured with configuration files.
 
 ## Quickstart
 #### Node Runtime Version 6.9.1 LTS
