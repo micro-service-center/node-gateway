@@ -25,6 +25,6 @@
 			"nodes": ["http://127.0.0.1:9016"]
 		}
   ],
-	"AUTH_KEY_NAME": "X-Credential",
+	"AUTH_KEY_NAME": "x-credential",
 	"PORT": 8011
 }

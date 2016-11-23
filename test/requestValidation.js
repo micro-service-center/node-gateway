@@ -51,7 +51,7 @@ describe('Validates Request', () => {
     request
       .get('/captcha')
       .set('Accept', 'application/json')
-      .set('X-Credential', 'aaa')
+      .set('AuthKey', 'aaa')
       .expect('Content-Type', /json/)
       .expect(401, done)
   })

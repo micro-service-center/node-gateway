@@ -75,16 +75,19 @@ class BaseValidator {
 	 * @return {this}
 	 */
 	checkAuthRequirement()	{
-			// console.log(this.getTarget().target.needs_auth)
-			// console.log(BaseValidator.hasAuthKey(this.request,this.conf.AUTH_KEY_NAME))
+		// console.log(this.getTarget().target.needs_auth)
+		// console.log(BaseValidator.hasAuthKey(this.request,this.conf.AUTH_KEY_NAME))
 		this.has_authkey = BaseValidator.hasAuthKey(this.request,this.conf.AUTH_KEY_NAME)
 		this.needs_auth = this.getTarget().target.needs_auth
-		if (this.needs_auth) {
-			if(!this.needs_auth == this.has_authkey) {
-				this.errorThrower.throw("authRequirementError")
-			}
+		if (!this.needs_auth) {
+			return this
 		}
-		return this
+
+		if(this.has_authkey) {
+				return this
+		} else {
+				this.errorThrower.throw("authRequirementError")
+		}
 	}
 
 	/**
@@ -108,6 +111,7 @@ class BaseValidator {
 	 * @return {Boolean}
 	 */
 	static hasAuthKey(request, AUTH_KEY_NAME)	{
+		// console.log(request.headers)
 		return Object.keys(request.headers).indexOf(AUTH_KEY_NAME) > -1
 	}
 
