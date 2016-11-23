@@ -41,7 +41,10 @@ npm start # start server
 ```shell
 npm test # test
 ```
+#### Test Coverage
+```shell
+npm run test_coverage
+```
 
 ## Change Log
-
 Please Refer to [https://github.com/BTCChina/phoenix-gateway/releases](https://github.com/BTCChina/phoenix-gateway/releases)
