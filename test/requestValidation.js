@@ -47,4 +47,23 @@ describe('Validates Request', () => {
       .expect(200, done)
   })
 
+  it('should reject request with invalid auth headers', (done) => {
+    request
+      .get('/captcha')
+      .set('Accept', 'application/json')
+      .set('X-Credential', 'aaa')
+      .expect('Content-Type', /json/)
+      .expect(401, done)
+  })
+
+
+  it('should allow request with valid auth headers', (done) => {
+    request
+      .get('/trade')
+      .set('Accept', 'application/json')
+      .set('X-Credential', 'aaa')
+      .expect('Content-Type', /json/)
+      .expect(200, done)
+  })
+
 })
