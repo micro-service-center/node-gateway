@@ -2,38 +2,29 @@
 	"SERVICES": [
 		{
 			"name": "authentication",
-			"protocol": "http",
-			"host": "127.0.0.1",
-			"port": "8006",
 			"path": "/auth",
 			"needs_auth": false,
-			"nodes": ["http://127.0.0.1:9008"]
+			"nodes": ["http://127.0.0.1:9018"]
 		},
 		{
 			"name": "captcha",
-			"protocol": "http",
-			"host": "127.0.0.1",
 			"path": "/captcha",
 			"needs_auth": true,
-			"nodes": ["http://127.0.0.1:9009"]
+			"nodes": ["http://127.0.0.1:9019"]
 		},
 		{
 			"name": "exchange",
-			"protocol": "http",
-			"host": "127.0.0.1",
 			"path": "/trade",
 			"needs_auth": true,
-			"nodes": ["http://127.0.0.1:9007"]
+			"nodes": ["http://127.0.0.1:9017"]
 		},
 		{
 			"name": "push",
-			"protocol": "http",
-			"host": "127.0.0.1",
 			"path": "/",
 			"needs_auth": true,
-			"nodes": ["http://127.0.0.1:9006"]
+			"nodes": ["http://127.0.0.1:9016"]
 		}
   ],
 	"AUTH_KEY_NAME": "X-Credential",
-	"PORT": 8001
+	"PORT": 8011
 }
