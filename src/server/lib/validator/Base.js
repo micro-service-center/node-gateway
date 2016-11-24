@@ -22,6 +22,30 @@ class BaseValidator {
 	}
 
 	/**
+	 * Function that Assembles Policies from A Configuration File
+	 * @param  {Object} conf Configuration that describes the policies
+	 */
+	assemblePolicies(conf) {
+
+	}
+
+	/**
+	 * Run checks all policies
+	 * @return {[type]} [description]
+	 */
+	run() {
+
+	}
+
+	/**
+	 * Finish Policy Check 
+	 * @return {Object} Result of the Policy check
+	 */
+	_done() {
+
+	}
+
+	/**
 	 * Judges what is included in the request object
 	 * @param  {request}
 	 * @return {Boolean}
