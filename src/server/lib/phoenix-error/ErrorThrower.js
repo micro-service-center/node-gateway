@@ -9,6 +9,7 @@ class ErrorThrower {
 	}	
 
 	throw() {
+		console.log(JSON.stringify(this.err))
 		// Log the error Here
 		throw { "name": `${this.err.emitter}Error`, "error" : this.err }
 	}
