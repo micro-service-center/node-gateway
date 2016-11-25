@@ -1,4 +1,4 @@
-const BasePolicy = require('base')
+const BasePolicy = require('./base')
 
 /** Class for User Policy */
 class HeaderPolicy extends BasePolicy {
@@ -8,12 +8,10 @@ class HeaderPolicy extends BasePolicy {
 	 * @param {user}
 	 * @return {Boolean}
 	 */
-	static approve(requestValidator) {
-		if (!requestValidator.paths.indexOf(requestValidator.pathRoot)) {
-			this.errorThrower.throw('pathError')
-		}
+	_approve(requestValidator) {
+		return true
 	}
 
 }
 
-module.exports = BasePolicy
+module.exports = HeaderPolicy

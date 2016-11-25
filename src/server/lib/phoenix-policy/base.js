@@ -8,21 +8,24 @@ class BasePolicy {
 		this.errorThrower = opt.errorThrower
 	}
 
-	approve(requestValidator) {
-
+	approve(validator) {
+		if (!this._approve(validator)) {
+			this.throwError()
+		}
 	}
+
 	/**
 	 * Judges whether a request or user object
 	 * @param {user}
 	 * @return {Boolean}
 	 */
-	static approve(object) {
+	_approve(validator) {
 		// Throws unimplemented error
 		throw new Error('Unimplemented')
 	}
 
 	throwError(){
-
+		this.errorThrower.throw()
 	}
 
 

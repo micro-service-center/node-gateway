@@ -1,6 +1,6 @@
 const http = require('http')
 const RequestHandler = require('./lib/RequestHandler')
-const RequestValidator = require('./lib/validator/GatewayValidator')
+const RequestValidator = require('./lib/phoenix-validator/RequestValidator')
 
 class App {
   constructor(opt) {
@@ -13,7 +13,7 @@ class App {
     // Request Validator
     let requestValidator = new RequestValidator({
       conf: this.gateway_conf,
-      errorConf: this.error_conf.validator.request
+      policy_conf: ['header_policy', 'path_policy']
     })
 
     // let userValidator = new UserValidator({

@@ -3,28 +3,27 @@
 		{
 			"name": "authentication",
 			"path": "/auth",
-			"needs_auth": false,
+			"auth_header": false,
 			"nodes": ["http://127.0.0.1:9018"]
 		},
 		{
 			"name": "captcha",
 			"path": "/captcha",
-			"needs_auth": true,
+			"auth_header": "x-credential",
 			"nodes": ["http://127.0.0.1:9019"]
 		},
 		{
 			"name": "exchange",
 			"path": "/trade",
-			"needs_auth": true,
+			"auth_header": "x-credential",
 			"nodes": ["http://127.0.0.1:9017"]
 		},
 		{
 			"name": "push",
 			"path": "/",
-			"needs_auth": true,
+			"auth_header": "x-credential",
 			"nodes": ["http://127.0.0.1:9016"]
 		}
   ],
-	"AUTH_KEY_NAME": "x-credential",
 	"PORT": 8011
 }

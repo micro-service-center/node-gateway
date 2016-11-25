@@ -1,27 +1,22 @@
 {
-	"validator": {
-		"request": { 
-			"LogRoot":"",
-			"LogPath":"validator",
-			"ErrorType":{
-				"pathError": {
-					"http_status": 401,
-					"code": "0001",
-					"msg": "URL Not Found"
-				},
-				"authRequirementError": {
-					"http_status": 401,
-					"code": "0002",
-					"msg": "Invalid Request"
-				}
-			}
+	"errors":{
+		"path_policy_error": {
+			"policy": "path_policy",
+			"log_path":"validator",
+			"log_root":"",
+			"http_status": 401,
+			"code": "0001",
+			"msg": "request path did not match any services",
+			"emitter": "request"
 		},
-		"user": {
-			"LogRoot":"",
-			"LogPath":"",
-			"ErrorType":{
-				
-			}
+		"header_policy_error": {
+			"policy": "header_policy",
+			"log_path":"validator",
+			"log_root":"",
+			"http_status": 401,
+			"code": "0002",
+			"msg": "request header did not contain credential",
+			"emitter": "request"
 		}
 	}
 }
