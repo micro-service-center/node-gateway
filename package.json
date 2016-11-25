@@ -20,7 +20,8 @@
     "should": "*",
     "supertest": "*",
     "nock": "*",
-    "istanbul": "*"
+    "istanbul": "*",
+    "codecov.io": "*"
   },
   "scripts": {
     "build_docs": "jsdoc -c jsdoc.conf",
