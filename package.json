@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build_docs": "jsdoc -c jsdoc.conf",
-    "start": "nodemon ./src/server/app.js",
+    "start": "nodemon ./src/app.js",
     "start_target": "nodemon ./src/utils/target.js",
     "test": "node ./node_modules/mocha/bin/mocha",
     "test_coverage": "node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha"
