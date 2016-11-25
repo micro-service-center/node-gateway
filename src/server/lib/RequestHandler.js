@@ -8,9 +8,7 @@ class RequestHandler {
    * @param {opt} x - Options needed for a request handler
    */
 	constructor(opt) {
-		this.conf = opt.conf
     this.requestValidator = opt.requestValidator
-
     // Stackoverflow #21409199
     this.proxy = httpProxy.createProxyServer({
       agent: new http.Agent()

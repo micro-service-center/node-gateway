@@ -1,14 +1,16 @@
 const ErrorThrowerFactory = require('../phoenix-error/ErrorThrowerFactory')
-const ERROR_CONF = require('../../conf/error.json')
-
-errorThrowerFactory = new ErrorThrowerFactory({conf: ERROR_CONF})
 
 /** Builds Policies */
 class PolicyFactory {
-	static _build(policy_name) {
+	constructor(opt){
+		this.errorThrowerFactory = new ErrorThrowerFactory({
+			conf: opt.error_conf
+		})
+	}
+	build(policy_name) {
 		let Policy = require(`./policies/${policy_name}`)
 		return new Policy({
-			errorThrower: errorThrowerFactory.build(policy_name)	
+			errorThrower: this.errorThrowerFactory.build(policy_name)	
 		})
 	}
 }

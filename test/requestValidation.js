@@ -1,12 +1,14 @@
 const should = require('should');
 const GATEWAY_CONFIG = require('../src/server/conf/gateway-example.json')
 const ERROR_CONFIG = require('../src/server/conf/error.json')
+const POLICY_CONFIG = require('../src/server/conf/policy.json')
 const nock = require('nock')
 let App = require('../src/server/server')
 
 let app = new App({
   gateway_conf: GATEWAY_CONFIG, 
-  error_conf: ERROR_CONFIG
+  error_conf: ERROR_CONFIG,
+  policy_conf: POLICY_CONFIG
 })
 let request = require('supertest')(`http://localhost:${GATEWAY_CONFIG.PORT}`)
 

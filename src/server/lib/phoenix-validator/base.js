@@ -8,6 +8,9 @@ class BaseValidator {
 	 * @param  {Array} policy_conf, Policies
 	 */
 	constructor(opt) {
+		this.policyFactory = new PolicyFactory({
+			error_conf:opt.error_conf
+		})
 		this.conf = opt.conf
 		this.policy_conf = opt.policy_conf
 	}
@@ -19,7 +22,7 @@ class BaseValidator {
 	get policies() {
 		var policy_list = []
 		this.policy_conf.forEach((policy)=>{
-			policy_list.push(PolicyFactory._build(policy))
+			policy_list.push(this.policyFactory.build(policy))
 		})
 		return policy_list
 	}

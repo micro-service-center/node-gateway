@@ -6,6 +6,7 @@ class App {
   constructor(opt) {
     this.gateway_conf = opt.gateway_conf
     this.error_conf = opt.error_conf
+    this.policy_conf = opt.policy_conf
     this.httpServer = null
   } 
 
@@ -13,7 +14,8 @@ class App {
     // Request Validator
     let requestValidator = new RequestValidator({
       conf: this.gateway_conf,
-      policy_conf: ['path_policy','header_policy'] // Sequence Matters
+      policy_conf: this.policy_conf.policies, // Sequence Matters
+      error_conf: this.error_conf
     })
 
     // let userValidator = new UserValidator({
@@ -22,7 +24,6 @@ class App {
 
     // Request Handler
     let requestHandler = new RequestHandler({ 
-      conf: this.gateway_conf,
       requestValidator: requestValidator
     })
 
