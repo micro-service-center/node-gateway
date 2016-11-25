@@ -1,4 +1,5 @@
-[![CircleCI](https://circleci.com/gh/BTCChina/phoenix-gateway/tree/dev.svg?style=shield&circle-token=45015a30fe553940bcc3267a691ce2a2a5857ae6)](https://circleci.com/gh/BTCChina/phoenix-gateway/tree/dev)
+[![CircleCI](https://circleci.com/gh/BTCChina/phoenix-gateway/tree/dev.svg?style=shield&circle-token=45015a30fe553940bcc3267a691ce2a2a5857ae6)](https://circleci.com/gh/BTCChina/phoenix-gateway/tree/dev) [![codecov](https://codecov.io/gh/BTCChina/phoenix-gateway/branch/dev/graph/badge.svg?token=A4wkHf7CWl)](https://codecov.io/gh/BTCChina/phoenix-gateway)
+
 
 ```
            __                     _                        __                          
