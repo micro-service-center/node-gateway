@@ -1,0 +1,6 @@
+{
+	"policies":[
+		"path_policy",
+		"header_policy"
+	]
+}

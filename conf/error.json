@@ -1,0 +1,22 @@
+{
+	"errors":{
+		"path_policy_error": {
+			"policy": "path_policy",
+			"log_path":"validator",
+			"log_root":"",
+			"http_status": 401,
+			"code": "0001",
+			"msg": "request path did not match any services",
+			"emitter": "request"
+		},
+		"header_policy_error": {
+			"policy": "header_policy",
+			"log_path":"validator",
+			"log_root":"",
+			"http_status": 401,
+			"code": "0002",
+			"msg": "request header did not contain credential",
+			"emitter": "request"
+		}
+	}
+}
