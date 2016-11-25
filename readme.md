@@ -42,9 +42,9 @@ npm start # start server
 ```shell
 npm test # test
 ```
-#### Test Coverage
+#### Test without Coverage
 ```shell
-npm run test_coverage
+npm run naked_test
 ```
 
 ## Change Log

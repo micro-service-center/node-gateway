@@ -1,7 +1,7 @@
 const should = require('should');
-const GATEWAY_CONFIG = require('../src/server/conf/gateway-example.json')
-const ERROR_CONFIG = require('../src/server/conf/error.json')
-const POLICY_CONFIG = require('../src/server/conf/policy.json')
+const GATEWAY_CONFIG = require('../conf/gateway-example.json')
+const ERROR_CONFIG = require('../conf/error.json')
+const POLICY_CONFIG = require('../conf/policy.json')
 const nock = require('nock')
 let App = require('../src/server/server')
 
