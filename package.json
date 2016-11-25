@@ -10,7 +10,8 @@
     "cors": "*",
     "debug": "*",
     "errorhandler": "*",
-    "limiter": "*"
+    "limiter": "*",
+    "phoenix-validator": "git+ssh://git@github.com:BTCChina/phoenix-validator.git"
   },
   "devDependencies": {
 		"jsdoc": "*",

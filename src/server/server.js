@@ -1,6 +1,6 @@
 const http = require('http')
 const RequestHandler = require('./lib/RequestHandler')
-const RequestValidator = require('./lib/phoenix-validator/RequestValidator')
+const RequestValidator = require('phoenix-validator').RequestValidator
 
 class App {
   constructor(opt) {
