@@ -6,7 +6,7 @@ errorThrowerFactory = new ErrorThrowerFactory({conf: ERROR_CONF})
 /** Builds Policies */
 class PolicyFactory {
 	static _build(policy_name) {
-		let Policy = require(`./${policy_name}`)
+		let Policy = require(`./policies/${policy_name}`)
 		return new Policy({
 			errorThrower: errorThrowerFactory.build(policy_name)	
 		})

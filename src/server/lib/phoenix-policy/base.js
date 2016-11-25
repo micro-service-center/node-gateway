@@ -8,6 +8,11 @@ class BasePolicy {
 		this.errorThrower = opt.errorThrower
 	}
 
+	/**
+	 * In Class Approve Method
+	 * Calls the constructor method
+	 * @param  {validator} validator [description]
+	 */
 	approve(validator) {
 		if (!this.constructor._approve(validator)) {
 			this.throwError()
