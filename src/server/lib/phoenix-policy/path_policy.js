@@ -8,7 +8,7 @@ class PathPolicy extends BasePolicy {
 	 * @param {user}
 	 * @return {Boolean}
 	 */
-	_approve(requestValidator) {
+	static _approve(requestValidator) {
 		return requestValidator.paths.indexOf(requestValidator.pathRoot) > -1
 	}
 

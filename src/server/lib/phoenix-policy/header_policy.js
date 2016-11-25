@@ -8,7 +8,7 @@ class HeaderPolicy extends BasePolicy {
 	 * @param {user}
 	 * @return {Boolean}
 	 */
-	_approve(requestValidator) {
+	static _approve(requestValidator) {
 		return true
 	}
 
