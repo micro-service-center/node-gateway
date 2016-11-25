@@ -40,7 +40,7 @@ class BaseValidator {
 		this.policies.forEach((policy, index) => {
 			policy.approve(this)
 		})
-		return this
+		return this	
 	}
 
 	validate(obj) {

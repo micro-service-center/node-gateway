@@ -59,9 +59,9 @@ describe('Validates Request', () => {
 
   it('should allow request with valid auth HeaderKey', (done) => {
     request
-      .get('/trade')
+      .get('/loan')
       .set('Accept', 'application/json')
-      .set('X-Credential', 'aaa')
+      .set('x-credential', 'aaa')
       .expect('Content-Type', /json/)
       .expect(200, done)
   })

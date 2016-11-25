@@ -80,8 +80,8 @@ class RequestValidator extends BaseValidator {
 	 * @param  {conf}
 	 * @return {Array}
 	 */
-	get hasAuthKey(){
-		return RequestValidator.hasAuthKey(this.request, this.conf.AUTH_KEY_NAME)	
+	get hasAuthKey() {
+		return RequestValidator._hasAuthKey(this.request, this.target.auth_header)	
 	}
 
 	/**
@@ -90,9 +90,9 @@ class RequestValidator extends BaseValidator {
 	 * @param  {AUTH_KEY_NAME}
 	 * @return {Boolean}
 	 */
-	static hasAuthKey(request, AUTH_KEY_NAME)	{
+	static _hasAuthKey(request, auth_key_name) {
 		// console.log(request.headers)
-		return Object.keys(request.headers).indexOf(AUTH_KEY_NAME) > -1
+		return Object.keys(request.headers).indexOf(auth_key_name) > -1
 	}
 
 	/**

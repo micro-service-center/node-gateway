@@ -19,8 +19,8 @@
 			"nodes": ["http://127.0.0.1:9017"]
 		},
 		{
-			"name": "push",
-			"path": "/",
+			"name": "loan",
+			"path": "/loan",
 			"auth_header": "x-credential",
 			"nodes": ["http://127.0.0.1:9016"]
 		}

@@ -13,7 +13,7 @@ class App {
     // Request Validator
     let requestValidator = new RequestValidator({
       conf: this.gateway_conf,
-      policy_conf: ['header_policy', 'path_policy']
+      policy_conf: ['path_policy','header_policy'] // Sequence Matters
     })
 
     // let userValidator = new UserValidator({

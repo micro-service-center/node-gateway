@@ -9,7 +9,10 @@ class HeaderPolicy extends BasePolicy {
 	 * @return {Boolean}
 	 */
 	static _approve(requestValidator) {
-		return true
+		if (!requestValidator.target.auth_header) {
+			return true
+		}
+		return requestValidator.hasAuthKey
 	}
 
 }
