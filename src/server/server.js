@@ -14,7 +14,7 @@ class App {
     // Request Validator
     let requestValidator = new RequestValidator({
       conf: this.gateway_conf,
-      policy_conf: this.policy_conf.policies, // Sequence Matters
+      policy_conf: this.policy_conf, // Sequence Matters
       error_conf: this.error_conf
     })
 
