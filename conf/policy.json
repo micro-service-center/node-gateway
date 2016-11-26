@@ -3,5 +3,5 @@
 		"path_policy",
 		"header_policy"
 	],
-	"path": "../../policies"
+	"path": "policies"
 }
