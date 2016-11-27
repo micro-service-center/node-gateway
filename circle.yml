@@ -4,6 +4,10 @@ machine:
 general:
     artifacts:
         - ./coverage
+checkout:
+    post:
+        - git submodule init
+        - git submodule update
 test:
     post:
         - bash <(curl -s https://codecov.io/bash)
