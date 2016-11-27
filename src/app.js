@@ -1,9 +1,11 @@
 const App = require('./server/server')
 
 // Load Configuration File
-const GATEWAY_CONFIG = require('../conf/gateway.json')
-const ERROR_CONFIG = require('../conf/error.json')
-const POLICY_CONFIG = require('../conf/policy.json')
+const CONF_ROOT = "../conf/gateway"
+const CONF_REALM = "dev"
+const GATEWAY_CONFIG = require(`${CONF_ROOT}/${CONF_REALM}/gateway.json`)
+const ERROR_CONFIG = require(`${CONF_ROOT}/${CONF_REALM}/error.json`)
+const POLICY_CONFIG = require(`${CONF_ROOT}/${CONF_REALM}/policy.json`)
 
 let app = new App({
   gateway_conf: GATEWAY_CONFIG,

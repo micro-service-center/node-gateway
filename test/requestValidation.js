@@ -1,7 +1,10 @@
+const CONF_ROOT = "../conf/gateway"
+const CONF_REALM = "test"
+const GATEWAY_CONFIG = require(`${CONF_ROOT}/${CONF_REALM}/gateway.json`)
+const ERROR_CONFIG = require(`${CONF_ROOT}/${CONF_REALM}/error.json`)
+const POLICY_CONFIG = require(`${CONF_ROOT}/${CONF_REALM}/policy.json`)
+
 const should = require('should');
-const GATEWAY_CONFIG = require('../conf/gateway-example.json')
-const ERROR_CONFIG = require('../conf/error.json')
-const POLICY_CONFIG = require('../conf/policy.json')
 const nock = require('nock')
 let App = require('../src/server/server')
 
