@@ -1,3 +1,6 @@
 [submodule "conf"]
 	path = conf
 	url = git@github.com:BTCChina/phoenix-conf-store.git
+[submodule "policies"]
+	path = policies
+	url = git@github.com:BTCChina/phoenix-policy-store.git
