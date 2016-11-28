@@ -2,7 +2,6 @@
 const CONF_ROOT = "../conf/gateway"
 const CONF_REALM = "test"
 const GATEWAY_CONFIG = require(`${CONF_ROOT}/${CONF_REALM}/gateway.json`)
-const POLICY_CONFIG = require(`${CONF_ROOT}/${CONF_REALM}/policy.json`)
 const ERROR_CONFIG = require(`../policies/error.json`)
 
 const should = require('should');
@@ -12,7 +11,6 @@ let App = require('../src/server/server')
 let app = new App({
   gateway_conf: GATEWAY_CONFIG, 
   error_conf: ERROR_CONFIG,
-  policy_conf: POLICY_CONFIG
 })
 let request = require('supertest')(`http://localhost:${GATEWAY_CONFIG.PORT}`)
 
@@ -64,9 +62,9 @@ describe('Validates Request', () => {
 
   it('should allow request with valid auth HeaderKey', (done) => {
     request
-      .get('/loan')
+      .get('/api')
       .set('Accept', 'application/json')
-      .set('x-credential', 'aaa')
+      .set('api-credential', 'aaa')
       .expect('Content-Type', /json/)
       .expect(200, done)
   })
@@ -75,7 +73,8 @@ describe('Validates Request', () => {
     request
       .get('/jwt_right_header')
       .set('Accept', 'application/json')
-      .set('x-credential', 'aaa')
+      // > jwt.encode('hello', 'INeedOneBitcoin')
+      .set('x-credential', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.ImhlbGxvIg._CgF2NnTfcQh5l1iZVcpMaj15nFjVR40m06Q8chA_kE')
       .expect('Content-Type', /json/)
       .expect(200, done)
   })
@@ -84,9 +83,9 @@ describe('Validates Request', () => {
     request
       .get('/jwt_wrong_header')
       .set('Accept', 'application/json')
-      .set('x-credential', 'aaa')
+      .set('x-credential', 'WRONGJWTTOKEN')
       .expect('Content-Type', /json/)
-      .expect(200, done)
+      .expect(401, done)
   })
 
 })

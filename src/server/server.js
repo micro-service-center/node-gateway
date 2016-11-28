@@ -1,21 +1,27 @@
 const http = require('http')
 const RequestHandler = require('./lib/RequestHandler')
-const RequestValidator = require('phoenix-validator').RequestValidator
+// const RequestValidator = require('phoenix-validator').RequestValidator
+const RequestValidator = require('./lib/RequestValidator')
+const PolicyFactory = require('cyanide-policy').PolicyFactory
 
 class App {
   constructor(opt) {
     this.gateway_conf = opt.gateway_conf
     this.error_conf = opt.error_conf
-    this.policy_conf = opt.policy_conf
     this.httpServer = null
   } 
 
   start () {
+    
+    let policyFactory = new PolicyFactory({
+      policy_path: this.gateway_conf.POLICY_PATH,
+      error_conf: this.error_conf  
+    })
+
     // Request Validator
     let requestValidator = new RequestValidator({
       conf: this.gateway_conf,
-      policy_conf: this.policy_conf, // Sequence Matters
-      error_conf: this.error_conf
+      policyFactory: policyFactory
     })
 
     // let userValidator = new UserValidator({
