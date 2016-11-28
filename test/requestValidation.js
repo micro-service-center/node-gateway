@@ -62,10 +62,27 @@ describe('Validates Request', () => {
       .expect(401, done)
   })
 
-
   it('should allow request with valid auth HeaderKey', (done) => {
     request
       .get('/loan')
+      .set('Accept', 'application/json')
+      .set('x-credential', 'aaa')
+      .expect('Content-Type', /json/)
+      .expect(200, done)
+  })
+
+  it('should accept requests with correct jwt', (done) => {
+    request
+      .get('/jwt_right_header')
+      .set('Accept', 'application/json')
+      .set('x-credential', 'aaa')
+      .expect('Content-Type', /json/)
+      .expect(200, done)
+  })
+
+  it('should reject requests with incorrect jwt', (done) => {
+    request
+      .get('/jwt_wrong_header')
       .set('Accept', 'application/json')
       .set('x-credential', 'aaa')
       .expect('Content-Type', /json/)
