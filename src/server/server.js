@@ -1,7 +1,9 @@
 const http = require('http')
 const RequestHandler = require('./lib/RequestHandler')
-// const RequestValidator = require('phoenix-validator').RequestValidator
-const RequestValidator = require('./lib/RequestValidator')
+
+const RequestValidator = require('phoenix-validator').RequestValidator
+// const RequestValidator = require('./lib/RequestValidator')
+
 const PolicyFactory = require('cyanide-policy').PolicyFactory
 
 class App {
@@ -12,7 +14,7 @@ class App {
   } 
 
   start () {
-    
+
     let policyFactory = new PolicyFactory({
       policy_path: this.gateway_conf.POLICY_PATH,
       error_conf: this.error_conf  
