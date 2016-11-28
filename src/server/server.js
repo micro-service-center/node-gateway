@@ -14,7 +14,7 @@ class App {
   } 
 
   start () {
-
+    
     let policyFactory = new PolicyFactory({
       policy_path: this.gateway_conf.POLICY_PATH,
       error_conf: this.error_conf  
