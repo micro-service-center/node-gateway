@@ -36,7 +36,7 @@ class RequestHandler {
       req.headers.connection = "Close";
       this.proxy.web(req, res, { target: postValidateReq.target.nodes[0] })
     } catch(e) {
-      console.log(e)
+      // console.log(e)
       res.writeHead(e.error.http_status, { 'Content-Type': 'application/json' });
       // res.write('request rejected' + req.url + '\n' + json.stringify(req.headers, true, 2));
       res.write(JSON.stringify(
