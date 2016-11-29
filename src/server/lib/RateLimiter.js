@@ -1,8 +1,8 @@
 const debug = require('debug')('phoenix:policy:rate-limiting')
 const limiter = require('limiter')
 
-
-class RateLimiter() {
+/** Limites Access Rate */
+class RateLimiter {
   constructor(options) {
     options = options || {};
     this.limit = options.limit || 1000;
@@ -11,7 +11,13 @@ class RateLimiter() {
     this.options = options;
   }
 
-  get limiter(key, limit) {
+  /**
+   * Get Limiter for different Keys
+   * @param  {[type]} key   [description]
+   * @param  {[type]} limit [description]
+   * @return {[type]}       [description]
+   */
+  get_limiter(key, limit) {
     var inst;
     debug('Key: %s', key) 
     if (key) {
@@ -25,6 +31,13 @@ class RateLimiter() {
     return inst
   }
 
+  /**
+   * Enforce the Limit
+   * @param  {[type]}   key     [description]
+   * @param  {[type]}   options [description]
+   * @param  {Function} cb      [description]
+   * @return {[type]}           [description]
+   */
   enforce(key, options, cb) {
     if (cb === undefined && typeof options === 'function') {
       cb = options
@@ -33,7 +46,7 @@ class RateLimiter() {
     options = options || {}
     let weight = options.weight || 1
     let limit = options.limit || this.limit
-    let inst = this.limiter(key, limit)
+    let inst = this.get_limiter(key, limit)
 
     if (inst) {
       let ok = inst.tryRemoveTokens(weight)
