@@ -9,6 +9,7 @@ class RequestHandler {
    */
 	constructor(opt) {
     this.requestValidator = opt.requestValidator
+    this.userValidator = opt.userValidator
     // Stackoverflow #21409199
     this.proxy = httpProxy.createProxyServer({
       agent: new http.Agent()
@@ -33,6 +34,7 @@ class RequestHandler {
     this.parseRequest(req)
     try {
       let postValidateReq = this.requestValidator.validate(req)
+      let postValidateUser = this.userValidator.validate(postValidateReq)
       req.headers.connection = "Close";
       this.proxy.web(req, res, { target: postValidateReq.target.nodes[0] })
     } catch(e) {

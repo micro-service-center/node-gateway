@@ -1,6 +1,7 @@
 const http = require('http')
 const RequestHandler = require('./lib/RequestHandler')
 const RequestValidator = require('./lib/RobustRequestValidator')
+const UserValidator = require('./lib/UserValidator')
 
 const PolicyFactory = require('cyanide-policy').PolicyFactory
 
@@ -18,23 +19,24 @@ class App {
       error_conf: this.error_conf  
     })
 
-    // Request Validator
-    let requestValidator = new RequestValidator({
+    let validator_conf = {
       conf: this.gateway_conf,
       policyFactory: policyFactory
-    })
+    }
 
-    // let userValidator = new UserValidator({
+    // Request Validator
+    let requestValidator = new RequestValidator(validator_conf)
 
-    // })
+    // User Validator
+    let userValidator = new UserValidator(validator_conf)
 
     // Request Handler
     let requestHandler = new RequestHandler({ 
-      requestValidator: requestValidator
+      requestValidator: requestValidator,
+      userValidator: userValidator
     })
 
     this.httpServer = http.createServer((req, res) => {
-      // Request Handler Validates
       requestHandler.handleRequest(req, res)
     }).listen(this.gateway_conf.PORT)
 
