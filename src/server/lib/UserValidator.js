@@ -12,13 +12,49 @@ class UserValidator extends BaseValidator {
 		this.target = user_info.target
 		this.request = user_info.request
 		this.user_info = user_info
+		this.change_pwd_at = null
 		return super.validate(user_info)
 	}
 
 	constructor(opt){
 		super(opt)
+		this.redis = opt.redis
 		this.rateLimiter = new RateLimiter({
 			interval: opt.conf.RATE_LIMIT_INTERVAL
+		})
+	}
+
+	get uid(){
+		return this.user_info.payload.uid
+	}
+
+	get app_id(){
+		return this.user_info.payload.app_id
+	}
+
+	get issued_at(){
+		return this.user_info.payload.issued_at
+	}
+
+	get expires_at(){
+		return this.user_info.payload.expires_at
+	}
+
+	get last_login_ip(){
+		return this.user_info.payload.last_login_ip
+	}
+
+	get now(){
+		return Math.floor(new Date().getTime() / 1000)	
+	}
+
+	get_change_pwd_at(){
+		this.redis.get(this.uid, (err, reply) => {
+			if(err)	{
+				throw err
+			} else {
+				this.change_pwd_at = JSON.parse(reply).change_pwd_at
+			}		
 		})
 	}
 
@@ -49,7 +85,7 @@ class UserValidator extends BaseValidator {
 	}
 
 	done() {
-		
+
 	}
 
 }

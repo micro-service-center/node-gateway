@@ -2,6 +2,7 @@ const http = require('http')
 const RequestHandler = require('./lib/RequestHandler')
 const RequestValidator = require('./lib/RobustRequestValidator')
 const UserValidator = require('./lib/UserValidator')
+const redis = require('redis')
 
 const PolicyFactory = require('cyanide-policy').PolicyFactory
 
@@ -10,6 +11,7 @@ class App {
     this.gateway_conf = opt.gateway_conf
     this.error_conf = opt.error_conf
     this.httpServer = null
+    this.redis = redis.createClient({url: opt.gateway_conf.REDIS_URL})
   } 
 
   start () {
@@ -21,7 +23,8 @@ class App {
 
     let validator_conf = {
       conf: this.gateway_conf,
-      policyFactory: policyFactory
+      policyFactory: policyFactory,
+      redis: this.redis
     }
 
     // Request Validator
