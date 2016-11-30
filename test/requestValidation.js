@@ -3,6 +3,7 @@ const CONF_ROOT = "../conf/gateway"
 const CONF_REALM = "test"
 const GATEWAY_CONFIG = require(`${CONF_ROOT}/${CONF_REALM}/gateway.json`)
 const ERROR_CONFIG = require(`../policies/error.json`)
+const jwt = require('jwt-simple')
 
 const should = require('should');
 const nock = require('nock')
@@ -70,11 +71,20 @@ describe('Validates Request', () => {
   })
 
   it('should accept requests with correct jwt', (done) => {
+    let expires_at = Math.floor(new Date().getTime() / 1000) + (60000 * 60 * 24 * 30)
+    let issued_at = Math.floor(new Date().getTime() / 1000) - (60000 * 60 * 24 * 30)
+    let jwt_str = jwt.encode({
+      'app_id': '1', 
+      'uid': '1', 
+      'expires_at': expires_at,
+      'issued_at': issued_at,
+      'last_login_ip': '192.168.1.1'
+    }, GATEWAY_CONFIG.SERVICES[1].secret)
     request
       .get('/jwt_right_header')
       .set('Accept', 'application/json')
       // jwt.encode({'appid':'1', 'uid':'1', 'expire_at': '2222222', 'issue_at': '1111111', 'last_login_ip': '192.168.1.1'}, 'INeedOneBitcoin')
-      .set('x-credential', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBpZCI6IjEiLCJ1aWQiOiIxIiwiZXhwaXJlX2F0IjoiMjIyMjIyMiIsImlzc3VlX2F0IjoiMTExMTExMSIsImxhc3RfbG9naW5faXAiOiIxOTIuMTY4LjEuMSJ9.Nc-ICJjPaplQ7y-XSo6lSYreFpoJWk6BdFQTctQDwCA')
+      .set('x-credential', jwt_str)
       .expect('Content-Type', /json/)
       .expect(200, done)
   })
