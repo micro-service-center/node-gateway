@@ -6,7 +6,7 @@ class RateLimiter {
   constructor(options) {
     options = options || {};
     this.limit = options.limit || 1000;
-    this.interval = options.interval || 1000; // ms
+    this.interval = options.interval || 60000; // 1 minute
     this.limiters = {};
     this.options = options;
   }

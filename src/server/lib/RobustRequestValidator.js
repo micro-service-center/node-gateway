@@ -5,11 +5,35 @@ class RobustRequestValidator extends RequestValidator {
 
 	constructor(opt){
 		super(opt)
-		this.rateLimiter = new RateLimiter()
+		this.rateLimiter = new RateLimiter({
+			interval: opt.conf.RATE_LIMIT_INTERVAL
+		})
 	}
 
-	enforceRateLimit(key, options, cb) {
-		this.rateLimiter.enforce(key, options, cb)
+	enforceRateLimit(args) {
+		args.limits.forEach((constrain)=>{
+			this.rateLimiter.enforce(
+				this.buildLimitKey(constrain.key), 
+				{ limit: constrain.limit }
+			)
+			console.log(constrain)
+		})
+		// this.rateLimiter.enforce(key, options, cb)
+	}
+
+	get ip(){
+		return RobustRequestValidator.getIP(this.request)
+	}
+
+	static getIP(req) {
+		return req.headers['x-forwarded-for'] || 
+			req.connection.remoteAddress || 
+			req.socket.remoteAddress ||
+			req.connection.socket.remoteAddress;	
+	}
+
+	buildLimitKey(key) {
+		return `${key}-${this[key]}`
 	}
 
 }
