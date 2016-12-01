@@ -34,9 +34,15 @@ class RequestHandler {
     this.parseRequest(req)
     try {
       let postValidateReq = this.requestValidator.validate(req)
-      let postValidateUser = this.userValidator.validate(postValidateReq)
       req.headers.connection = "Close";
-      this.proxy.web(req, res, { target: postValidateReq.target.nodes[0] })
+      var p = new Promise((resolve, reject) => {
+        this.userValidator.validate(postValidateReq, resolve, reject)
+      })
+      p.then((response)=>{
+        this.proxy.web(req, res, { target: postValidateReq.target.nodes[0] })
+      },(error)=>{
+
+      })
     } catch(e) {
       console.log(e)
       res.writeHead(e.error.http_status, { 'Content-Type': 'application/json' });

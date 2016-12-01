@@ -9,11 +9,13 @@ class UserValidator extends BaseValidator {
 		return this.target.policy[this.constructor.name]	
 	}
 
-	validate(user_info) {
+	validate(user_info, resolve, reject) {
 		this.target = user_info.target
 		this.request = user_info.request
 		this.user_info = user_info
 		this.change_pwd_at = null
+		this.resolve = resolve
+		this.reject = reject
 		return super.validate(user_info)
 	}
 
@@ -50,13 +52,13 @@ class UserValidator extends BaseValidator {
 		return Math.floor(new Date().getTime() / 1000)	
 	}
 
-	get_change_pwd_at(policy){
+	get_change_pwd_at(){
 		this.redis.get(this.uid, (err, reply) => {
 			if(err)	{
-				policy.throwError()
+				this.reject(err)
 			} else {
 				this.change_pwd_at = JSON.parse(reply).change_pwd_at
-				this.next()
+				this.resolve(JSON.parse(reply).change_pwd_at)
 			}		
 		})
 	}
@@ -88,7 +90,7 @@ class UserValidator extends BaseValidator {
 	}
 
 	done() {
-
+		this.resolve()
 	}
 
 }

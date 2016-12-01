@@ -15,7 +15,11 @@ class RequestValidator extends BaseValidator {
 	}	
 
 	get policy_conf() {
-		return this.target.policy[this.constructor.name]	
+		try {
+			return this.target.policy[this.constructor.name]	
+		} catch(e){
+			return ["path_policy"]
+		}
 	}
 
 	/**
@@ -49,12 +53,7 @@ class RequestValidator extends BaseValidator {
 	 * @return { target } Service Name
 	 */
 	get target() {
-		let _target = RequestValidator._getTarget(this.conf, this.pathRoot)
-		if (!_target) {
-			throw "Error"	
-		}else {
-			return _target
-		}
+		return RequestValidator._getTarget(this.conf, this.pathRoot)
 	}
 
 	validate(request) {

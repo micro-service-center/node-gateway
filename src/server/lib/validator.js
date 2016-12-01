@@ -10,6 +10,7 @@ class BaseValidator {
 	 */
 	constructor(opt) {
 		this.policyFactory = opt.policyFactory
+		this.policy_list = []
 	}
 
 	/**
@@ -35,9 +36,7 @@ class BaseValidator {
 	}
 
 	after() {
-		this.policy_index = 0
-		console.log('end !!!!!!!!!!!!!!')
-		return this
+		return this.done()
 	}
 
 	/**
@@ -45,31 +44,20 @@ class BaseValidator {
 	 * @return {[type]} [description]
 	 */
 	run() {
-		this.policy_index = 0
-		console.log('start !!!!!!!!!!!!!!')
+		this.policy_list = this.policies
 		return this.next()
 	}
 
 	next() {
-		console.log(`length: ${this.policies.length}`)
-		console.log('>>>>>>>>>>>>>>>>>')
-		console.log(`index: ${this.policy_index}`)
-		if (this.policy_index < this.policies.length) {
-			this.policy_index += 1
-			console.log('----------------------------------')
-			console.log(this.policies[this.policy_index])
-			this.policies[this.policy_index].approve(this)
+		if (this.policy_list.length) {
+			return this.policy_list.shift().approve(this)
 		} else {
-			return this
+			return this.after()
 		}
 	}
 
 	validate(obj) {
-		return this
-			.before()
-			.run()
-			.after()
-			.done()
+		return this.before().run()
 	}
 
 	/**
