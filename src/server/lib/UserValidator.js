@@ -37,6 +37,7 @@ class UserValidator extends BaseValidator {
 	}
 
 	get expires_at(){
+		// console.log(this.user_info.payload)
 		return this.user_info.payload.expires_at
 	}
 
@@ -48,12 +49,13 @@ class UserValidator extends BaseValidator {
 		return Math.floor(new Date().getTime() / 1000)	
 	}
 
-	get_change_pwd_at(){
+	get_change_pwd_at(policy){
 		this.redis.get(this.uid, (err, reply) => {
 			if(err)	{
-				throw err
+				policy.throwError()
 			} else {
 				this.change_pwd_at = JSON.parse(reply).change_pwd_at
+				this.next()
 			}		
 		})
 	}
