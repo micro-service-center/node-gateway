@@ -1,4 +1,5 @@
-const BaseValidator = require('cyanide-validator').BaseValidator
+// const BaseValidator = require('cyanide-validator').BaseValidator
+const BaseValidator = require('./validator')
 const RateLimiter = require('./RateLimiter')
 
 class UserValidator extends BaseValidator {

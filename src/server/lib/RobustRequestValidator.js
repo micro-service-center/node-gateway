@@ -1,4 +1,5 @@
-const RequestValidator = require('phoenix-validator').RequestValidator
+// const RequestValidator = require('phoenix-validator').RequestValidator
+const RequestValidator = require('./RequestValidator')
 const RateLimiter = require('./RateLimiter')
 
 class RobustRequestValidator extends RequestValidator {
