@@ -12,6 +12,7 @@
     "redis": "*",
     "errorhandler": "*",
     "pm2": "*",
+    "jwt-simple": "*",
     "phoenix-validator": "git+ssh://git@github.com:BTCChina/phoenix-validator.git"
   },
   "devDependencies": {
