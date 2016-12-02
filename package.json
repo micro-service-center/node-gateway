@@ -11,10 +11,8 @@
     "debug": "*",
     "redis": "*",
     "errorhandler": "*",
-    "limiter": "*",
     "pm2": "*",
-    "phoenix-validator": "git+ssh://git@github.com:BTCChina/phoenix-validator.git",
-    "cyanide-validator": "git+https://github.com/cyanideio/validator"
+    "phoenix-validator": "git+ssh://git@github.com:BTCChina/phoenix-validator.git"
   },
   "devDependencies": {
 		"jsdoc": "*",

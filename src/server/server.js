@@ -1,7 +1,7 @@
 const http = require('http')
 const RequestHandler = require('./lib/RequestHandler')
-const RequestValidator = require('./lib/RobustRequestValidator')
-const UserValidator = require('./lib/UserValidator')
+const RequestValidator = require('phoenix-validator').RobustRequestValidator
+const UserValidator = require('phoenix-validator').UserValidator
 const redis = require('redis')
 
 const PolicyFactory = require('cyanide-policy').PolicyFactory
