@@ -12,7 +12,11 @@ class RequestHandler {
     this.userValidator = opt.userValidator
     // Stackoverflow #21409199
     this.proxy = httpProxy.createProxyServer({
-      agent: new http.Agent()
+      agent: new http.Agent(),
+      changeOrigin: true,
+      target: {
+        https: true
+      }
     })
   }
 
