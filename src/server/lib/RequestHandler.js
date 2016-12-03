@@ -44,8 +44,8 @@ class RequestHandler {
       })
       p.then((response)=>{
         this.proxy.web(req, res, { target: postValidateReq.target.nodes[0] })
-      },(error)=>{
-
+      },(rejected_policy)=>{
+        rejected_policy.throwError()
       })
     } catch(e) {
       console.log(e)
