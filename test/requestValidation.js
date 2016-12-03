@@ -22,6 +22,10 @@ describe('Validates Request', () => {
     // Prepare for the Target Server
     GATEWAY_CONFIG.SERVICES.forEach((service)=>{
       nock(service.nodes[0])
+        .defaultReplyHeaders({
+          'X-Powered-By': 'Rails',
+          'Content-Type': 'application/json'
+        })
         .get(service.path)
         .reply(200, {
           message: 'succeed'
