@@ -74,7 +74,7 @@ describe('Validates Request', () => {
       .expect(200, done)
   })
 
-  it('should accept requests with correct jwt', (done) => {
+  it('should reject requests with correct jwt when redis is offline', (done) => {
     let expires_at = Math.floor(new Date().getTime() / 1000) + (60000 * 60 * 24 * 30)
     let issued_at = Math.floor(new Date().getTime() / 1000) - (60000 * 60 * 24 * 30)
     let jwt_str = jwt.encode({
@@ -90,7 +90,7 @@ describe('Validates Request', () => {
       // jwt.encode({'appid':'1', 'uid':'1', 'expire_at': '2222222', 'issue_at': '1111111', 'last_login_ip': '192.168.1.1'}, 'INeedOneBitcoin')
       .set('x-credential', jwt_str)
       .expect('Content-Type', /json/)
-      .expect(200, done)
+      .expect(401, done)
   })
 
   it('should reject requests with incorrect jwt', (done) => {
