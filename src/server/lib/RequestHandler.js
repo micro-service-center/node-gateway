@@ -45,16 +45,23 @@ class RequestHandler {
       p.then((response)=>{
         this.proxy.web(req, res, { target: postValidateReq.target.nodes[0] })
       },(rejected_policy)=>{
-        rejected_policy.throwError()
+        console.log('herereere')
+      res.writeHead(401, { 'Content-Type': 'application/json' })
+      // res.write('request rejected' + req.url + '\n' + json.stringify(req.headers, true, 2));
+      res.write(JSON.stringify(
+        {"msg": 'aa', "code": 1}
+      ))
+      res.end()
+        // rejected_policy.throwError()
       })
     } catch(e) {
       console.log(e)
-      res.writeHead(e.error.http_status, { 'Content-Type': 'application/json' });
+      res.writeHead(e.error.http_status, { 'Content-Type': 'application/json' })
       // res.write('request rejected' + req.url + '\n' + json.stringify(req.headers, true, 2));
       res.write(JSON.stringify(
         {"msg": `${e.name} Error`, "code": e.error.code}
-      ));
-      res.end();      
+      ))
+      res.end()
     }
   }
 

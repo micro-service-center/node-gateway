@@ -84,14 +84,20 @@ describe('Validates Request', () => {
       'issued_at': issued_at,
       'last_login_ip': '192.168.1.1'
     }, GATEWAY_CONFIG.SERVICES[1].secret)
+
     request
       .get('/jwt_right_header')
       .set('Accept', 'application/json')
       // jwt.encode({'appid':'1', 'uid':'1', 'expire_at': '2222222', 'issue_at': '1111111', 'last_login_ip': '192.168.1.1'}, 'INeedOneBitcoin')
       .set('x-credential', jwt_str)
       .expect('Content-Type', /json/)
-      .expect(401, done)
-  })
+      .expect(401)
+      .end(function(err, res) {
+        // res.body.should.have.property('items').with.lengthOf(2);
+        if (err) return done(err);
+        done();
+      });
+  }).timeout(5000)
 
   it('should reject requests with incorrect jwt', (done) => {
     request
