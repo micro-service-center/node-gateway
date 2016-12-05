@@ -1,7 +1,9 @@
 const http = require('http')
 const RequestHandler = require('./lib/RequestHandler')
-const RequestValidator = require('phoenix-validator').RobustRequestValidator
-const UserValidator = require('phoenix-validator').UserValidator
+// const RequestValidator = require('phoenix-validator').RobustRequestValidator
+// const UserValidator = require('phoenix-validator').UserValidator
+const RequestValidator = require('./lib/RobustRequestValidator')
+const UserValidator = require('./lib/UserValidator')
 const redis = require('redis')
 
 const PolicyFactory = require('cyanide-policy').PolicyFactory
@@ -27,6 +29,7 @@ class App {
       redis: this.redis
     }
 
+    
     // Request Validator
     let requestValidator = new RequestValidator(validator_conf)
 
