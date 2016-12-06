@@ -10,6 +10,7 @@ class UserValidator extends BaseValidator {
 	}
 
 	validate(user_info) {
+		// console.log(user_info)
 		this.target = user_info.target
 		this.request = user_info.request
 		this.user_info = user_info
@@ -62,8 +63,9 @@ class UserValidator extends BaseValidator {
 			}		
 		})
 		setTimeout(()=>{
-			this.reject(policy.throwError())
-			// throw policy.throwError()
+			// FIX ME: Change policy "throwError Method"
+			let e = { 'name':'userError', 'error': policy.errorThrower.err }
+			this.reject(e)
 		}, this.REDIS_TIMEOUT)
 	}
 
