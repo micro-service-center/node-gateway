@@ -62,8 +62,9 @@ class UserValidator extends BaseValidator {
 			}		
 		})
 		setTimeout(()=>{
-			this.reject(policy.throwError())
-			// throw policy.throwError()
+			// FIX ME: Change policy "throwError Method"
+			let e = { 'name':'userError', 'error': policy.errorThrower.err }
+			this.reject(e)
 		}, this.REDIS_TIMEOUT)
 	}
 

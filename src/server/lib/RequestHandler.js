@@ -33,9 +33,9 @@ class RequestHandler {
     this.req.headers.connection = "Close"
 
     this.requestValidator.validate(req)
-    .then((result)=> this.userValidator.validate(result))
-    .then((result)=> this.resolveRequest(result))
-    .catch((err)=> this.rejectRequest(err))
+    .then(result => this.userValidator.validate(result))
+    .then(result => this.resolveRequest(result))
+    .catch(err   => this.rejectRequest(err))
   }
 
   resolveRequest(result) {
@@ -45,7 +45,6 @@ class RequestHandler {
   rejectRequest(err) {
     console.log(err)
     this.res.writeHead(err.error.http_status, { 'Content-Type': 'application/json' })
-    // res.write('request rejected' + req.url + '\n' + json.stringify(req.headers, true, 2));
     this.res.write(JSON.stringify(
       {"msg": `${err.name} Error`, "code": err.error.code}
     ))
