@@ -32,15 +32,10 @@ class RequestHandler {
     this.res = res
     this.req.headers.connection = "Close"
 
-    this.requestValidator
-    .validate(req)
-    .then((result)=>{this.userValidator.validate(result)
-    .then((result)=>{this.resolveRequest(result)})}).catch((err)=>{
-     this.rejectRequest(err) 
-    }).catch((err)=>{
-     this.rejectRequest(err) 
-    })
-
+    this.requestValidator.validate(req)
+    .then((result)=> this.userValidator.validate(result))
+    .then((result)=> this.resolveRequest(result))
+    .catch((err)=> this.rejectRequest(err))
   }
 
   resolveRequest(result) {
