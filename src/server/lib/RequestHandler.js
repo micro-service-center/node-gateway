@@ -34,6 +34,7 @@ class RequestHandler {
 
     this.requestValidator.validate(req)
     .then(result => this.userValidator.validate(result))
+    // .then(this.userValidator.validate)
     .then(result => this.resolveRequest(result))
     .catch(err   => this.rejectRequest(err))
   }

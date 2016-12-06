@@ -10,6 +10,7 @@ class UserValidator extends BaseValidator {
 	}
 
 	validate(user_info) {
+		// console.log(user_info)
 		this.target = user_info.target
 		this.request = user_info.request
 		this.user_info = user_info
