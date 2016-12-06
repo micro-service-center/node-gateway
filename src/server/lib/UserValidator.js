@@ -96,7 +96,7 @@ class UserValidator extends BaseValidator {
 	}
 
 	done() {
-		this.resolve(this.user_info)
+		return this.resolve(this.user_info)
 	}
 
 }
