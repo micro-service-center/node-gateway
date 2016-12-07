@@ -22,15 +22,16 @@ class RequestHandler {
     })
   }
 
-  chain(request) {
-    return this.promises.reduce((cur, next)=>{
-      return cur.then((res)=>{return next(res)})
-    }, Promise.resolve(request))
-  }
+  // WORK IN PROGRESS
+  // chain(request) {
+  //   return this.promises.reduce((cur, next)=>{
+  //     return cur.then((res)=>{return next(res)})
+  //   }, Promise.resolve(request))
+  // }
 
-  get promises() {
-    return this.validators.map((validator)=>{ return validator.validate}) 
-  }
+  // get promises() {
+  //   return this.validators.map((validator)=>{ return validator.validate}) 
+  // }
 
   /**
   * Process incoming request
@@ -42,12 +43,6 @@ class RequestHandler {
     this.req = req
     this.res = res
     this.req.headers.connection = "Close"
-
-    // RequestHandler
-    // this
-    // .chain(req)
-    // .then(result => this.resolveRequest(result))
-    // .catch(err => this.rejectRequest(err))
 
     // Why not use the code below ? Stackoverflow#34930771d, time wasted here: 2 days
     // .then(this.userValidator.validate)
@@ -62,7 +57,6 @@ class RequestHandler {
   }
 
   rejectRequest(err) {
-    console.log(err)
     this.res.writeHead(err.error.http_status, { 'Content-Type': 'application/json' })
     this.res.write(JSON.stringify(
       {"msg": `${err.name} Error`, "code": err.error.code}
