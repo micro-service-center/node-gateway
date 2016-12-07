@@ -51,13 +51,20 @@ class RequestHandler {
     .catch(err   => this.rejectRequest(err))
   }
 
+  /**
+   * resolve and Proxy request
+   * @param  {object} result the result of all validations
+   */
   resolveRequest(result) {
     this.req.headers.connection = "Close"
     this.proxy.web(this.req, this.res, { target: result.target.nodes[0] })
   }
 
+  /**
+   * Function to Reject Request whenever an error is caught
+   * @param  {object} err  Error Object
+   */
   rejectRequest(err) {
-    console.log(err)
     this.res.writeHead(err.error.http_status, { 'Content-Type': 'application/json' })
     this.res.write(JSON.stringify(
       {"msg": `${err.name} Error`, "code": err.error.code}
