@@ -13,7 +13,8 @@
     "errorhandler": "*",
     "pm2": "*",
     "jwt-simple": "*",
-    "phoenix-validator": "git+ssh://git@github.com:BTCChina/phoenix-validator.git"
+    "phoenix-validator": "git+ssh://git@github.com:BTCChina/phoenix-validator.git",
+    "phoenix-policy": "https://github.com/BTCChina/policy.git"
   },
   "devDependencies": {
 		"jsdoc": "*",
