@@ -42,7 +42,6 @@ class RequestHandler {
   handleRequest(req, res) {
     this.req = req
     this.res = res
-    this.req.headers.connection = "Close"
 
     // Why not use the code below ? Stackoverflow#34930771d, time wasted here: 2 days
     // .then(this.userValidator.validate)
@@ -53,6 +52,7 @@ class RequestHandler {
   }
 
   resolveRequest(result) {
+    this.req.headers.connection = "Close"
     this.proxy.web(this.req, this.res, { target: result.target.nodes[0] })
   }
 
