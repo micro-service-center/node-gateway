@@ -32,11 +32,13 @@ class App {
     let requestValidator = new RequestValidator(validator_conf)
     // User Validator
     let userValidator = new UserValidator(validator_conf)
+
     // Request Handler
     let requestHandler = new RequestHandler({ 
       requestValidator: requestValidator,
       userValidator: userValidator
     })
+
     this.httpServer = http.createServer((req, res) => {
       requestHandler.handleRequest(req, res)
     }).listen(this.gateway_conf.PORT)

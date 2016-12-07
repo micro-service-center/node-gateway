@@ -52,12 +52,11 @@ class BaseValidator {
 	}
 
 	validate(obj) {
-		this.promise = new Promise((resolve, reject)=>{
+		return new Promise((resolve, reject)=>{
 			this.resolve = resolve
 			this.reject = reject
 			this.before().run()
 		})
-		return this.promise
 	}
 
 	/**

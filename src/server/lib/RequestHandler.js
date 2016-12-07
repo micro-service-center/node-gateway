@@ -9,6 +9,7 @@ class RequestHandler {
    * @param {opt} x - Options needed for a request handler
    */
 	constructor(opt) {
+    this.validators = opt.validators
     this.requestValidator = opt.requestValidator
     this.userValidator = opt.userValidator
     // Stackoverflow #21409199
@@ -19,6 +20,16 @@ class RequestHandler {
         https: true
       }
     })
+  }
+
+  chain(request) {
+    return this.promises.reduce((cur, next)=>{
+      return cur.then((res)=>{return next(res)})
+    }, Promise.resolve(request))
+  }
+
+  get promises() {
+    return this.validators.map((validator)=>{ return validator.validate}) 
   }
 
   /**
@@ -32,10 +43,16 @@ class RequestHandler {
     this.res = res
     this.req.headers.connection = "Close"
 
+    // RequestHandler
+    // this
+    // .chain(req)
+    // .then(result => this.resolveRequest(result))
+    // .catch(err => this.rejectRequest(err))
+
+    // Why not use the code below ? Stackoverflow#34930771d, time wasted here: 2 days
+    // .then(this.userValidator.validate)
     this.requestValidator.validate(req)
-    // .then(result => this.userValidator.validate(result)
-    // .then(result => {return this.userValidator.validate(result)})
-    .then(this.userValidator.validate)
+    .then(result => this.userValidator.validate(result))
     .then(result => this.resolveRequest(result))
     .catch(err   => this.rejectRequest(err))
   }
@@ -45,7 +62,7 @@ class RequestHandler {
   }
 
   rejectRequest(err) {
-    // console.log(err)
+    console.log(err)
     this.res.writeHead(err.error.http_status, { 'Content-Type': 'application/json' })
     this.res.write(JSON.stringify(
       {"msg": `${err.name} Error`, "code": err.error.code}
