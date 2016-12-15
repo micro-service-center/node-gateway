@@ -65,6 +65,7 @@ class RequestHandler {
    * @param  {object} err  Error Object
    */
   rejectRequest(err) {
+    console.log(err)
     this.res.writeHead(err.error.http_status, { 'Content-Type': 'application/json' })
     this.res.write(JSON.stringify(
       {"msg": `${err.name} Error`, "code": err.error.code}
