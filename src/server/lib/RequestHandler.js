@@ -68,7 +68,7 @@ class RequestHandler {
     console.log(err)
     this.res.writeHead(err.error.http_status, { 'Content-Type': 'application/json' })
     this.res.write(JSON.stringify(
-      {"msg": `${err.name} Error`, "code": err.error.code}
+      {"msg": `${err.name}`, "code": err.error.code}
     ))
     this.res.end()
   }
