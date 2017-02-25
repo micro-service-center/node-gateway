@@ -1,0 +1,9 @@
+{
+  "env": "test",
+  "vaultech_node": {
+    "host": "https://localhost",
+    "port": "3006",
+    "name": "vaultech_node_server"
+  },
+  "POLICY_PATH": "vaultech-policy-store"
+}

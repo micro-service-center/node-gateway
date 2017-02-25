@@ -1,0 +1,182 @@
+{
+  "ROUTERS": [
+    {
+      "name": "kyc",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": "post",
+          "apiHandler": "ContactHandler",
+          "path": "/kyc/user/contact"
+        },
+        {
+          "method": "post",
+          "apiHandler": "PersonHandler",
+          "path": "/kyc/user/person"
+        },
+        {
+          "method": "post",
+          "apiHandler": "CorporateHandler",
+          "path": "/kyc/corporate"
+        }
+      ]
+    },
+    {
+      "name": "authentication",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": "post",
+          "apiHandler": "LoginHandler",
+          "path": "/login"
+        },
+        {
+          "method": "post",
+          "apiHandler": "RegisterHandler",
+          "path": "/register"
+        },
+        {
+          "method": "post",
+          "apiHandler": "VerifyHandler",
+          "path": "/verify"
+        },
+        {
+          "method": "post",
+          "apiHandler": "RetrieveHandler",
+          "path": "/retrieve"
+        }
+      ]
+    },
+    {
+      "name": "deposit",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": [
+            "post",
+            "del",
+            "get"
+          ],
+          "apiHandler": "FiatDepositHandler",
+          "path": "/fiat/deposit"
+        }
+      ]
+    },
+    {
+      "name": "withdraw",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": [
+            "post",
+            "del",
+            "get"
+          ],
+          "apiHandler": "FiatWithdrawHandler",
+          "path": "/fiat/withdraw"
+        }
+      ]
+    },
+    {
+      "name": "account",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": [
+            "post",
+            "del",
+            "get"
+          ],
+          "apiHandler": "BankHandler",
+          "path": "/account/bank"
+        },
+        {
+          "method": [
+            "post",
+            "del",
+            "get"
+          ],
+          "apiHandler": "CryptoHandler",
+          "path": "/account/crypto"
+        }
+      ]
+    },
+    {
+      "name": "trade",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": "post",
+          "apiHandler": "BankHandler",
+          "path": "/trade/crypto/:currency"
+        }
+      ]
+    },
+    {
+      "name": "history",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": "post",
+          "apiHandler": "LoginHandler",
+          "path": "/history/login"
+        },
+        {
+          "method": "post",
+          "apiHandler": "BalanceHandler",
+          "path": "/history/balance"
+        },
+        {
+          "method": "post",
+          "apiHandler": "KycHandler",
+          "path": "/history/kyc"
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": "get",
+          "apiHandler": "BalanceHandler",
+          "path": "/api/v1/user/banlance/:currency"
+        },
+        {
+          "method": "get",
+          "apiHandler": "UserHandler",
+          "path": "/user"
+        }
+      ]
+    },
+    {
+      "name": "apikey",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": "get",
+          "apiHandler": "BalanceHandler",
+          "path": "/api/v1/user/banlance/:currency"
+        },
+        {
+          "method": [
+            "post",
+            "del",
+            "get"
+          ],
+          "apiHandler": "APIKeyHandler",
+          "path": "/apikey"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "env": "staging",
+  "VAULTECH_BACKEND": {
+    "domain": "http://localhost",
+    "port": "3006",
+    "name": "vaultech_node_server"
+  },
+  "CORS_WHITE_LIST": [],
+  "POLICY_PATH": "vaultech-policy-store"
+}

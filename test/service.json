@@ -1,0 +1,15 @@
+{
+  "SERVICES": [
+    {
+      "name": "Authentication",
+      "path": "/api/v1",
+      "auth_header": "",
+      "policy": {
+        "ProfileRequestValidator": [
+          "path_policy",
+          "header_policy"
+        ]
+      }
+    }
+  ]
+}

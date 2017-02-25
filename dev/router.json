@@ -1,0 +1,31 @@
+{
+  "ROUTES": [
+    {
+      "name": "authentication",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": "post",
+          "apiHandler": "LoginHandler",
+          "path": "/login"
+        },
+        {
+          "method": "post",
+          "apiHandler": "RegisterHandler",
+          "path": "/register"
+        },
+        {
+          "method": "post",
+          "apiHandler": "VerifyHandler",
+          "path": "/verify"
+        },
+        {
+          "method": "post",
+          "apiHandler": "RetrieveHandler",
+          "path": "/retrieve"
+        }
+      ]
+    }
+  ]
+}
