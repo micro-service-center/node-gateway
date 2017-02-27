@@ -1,7 +1,27 @@
 {
   "SERVICES": [
     {
-      "name": "authentication",
+      "name": "Authentication",
+      "path": "/api",
+      "auth_header": "",
+      "policy": {
+        "RequestValidator": [
+          "path_policy"
+        ]
+      }
+    },
+    {
+      "name": "GoogleCode",
+      "path": "/api",
+      "auth_header": "",
+      "policy": {
+        "RequestValidator": [
+          "path_policy"
+        ]
+      }
+    },
+    {
+      "name": "TwoFactor",
       "path": "/api",
       "auth_header": "",
       "policy": {
