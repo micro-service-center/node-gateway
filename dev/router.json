@@ -18,12 +18,12 @@
         {
           "method": "post",
           "apiHandler": "VerifyHandler",
-          "path": "/verify"
+          "path": "/account/verify"
         },
         {
           "method": "post",
           "apiHandler": "RetrieveHandler",
-          "path": "/retrieve"
+          "path": "/password/retrieve"
         }
       ]
     },
