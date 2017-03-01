@@ -5,6 +5,15 @@
     "port": "3006",
     "name": "vaultech_node_server"
   },
+  "EMAIL": {
+    "host": "smtp.zoho.com ",
+    "username": "jack.sun@cyanide.io",
+    "password": "J1a2c3k45",
+    "issuer": "jack.sun@cyanide.io",
+    "text": {
+      "register": "welcome to register vaul.tech,please follow link"
+    }
+  },
   "CORS_WHITE_LIST": [],
   "POLICY_PATH": "vaultech-policy-store"
 }
