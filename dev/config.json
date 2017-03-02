@@ -5,6 +5,11 @@
     "port": "3006",
     "name": "vaultech_node_server"
   },
+  "TASTEPIE_SERVICE": {
+    "domain": "",
+    "port": "",
+    "path": "/api/v1"
+  },
   "EMAIL": {
     "host": "smtp.zoho.com ",
     "username": "jack.sun@cyanide.io",
