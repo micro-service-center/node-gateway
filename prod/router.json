@@ -18,12 +18,56 @@
         {
           "method": "post",
           "apiHandler": "VerifyHandler",
-          "path": "/verify"
+          "path": "/account/verify"
         },
         {
           "method": "post",
           "apiHandler": "RetrieveHandler",
-          "path": "/retrieve"
+          "path": "/password/retrieve"
+        }
+      ]
+    },
+    {
+      "name": "GoogleCode",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": "get",
+          "path": "/authenticator/:label",
+          "apiHandler": "CreateSecretHandler"
+        },
+        {
+          "method": "get",
+          "path": "/authenticator/:totp_code/:otp_key",
+          "apiHandler": "ValidateCodeHandler"
+        },
+        {
+          "method": "get",
+          "path": "/authenticator/u/:user_id/:two_factor_code",
+          "apiHandler": "ValidateUserCodeHandler"
+        }
+      ]
+    },
+    {
+      "name": "TwoFactor",
+      "baseHandler": "BaseHandler",
+      "api_version": "/api/v1",
+      "api": [
+        {
+          "method": "post",
+          "path": "/authenticator",
+          "apiHandler": "PostHandler"
+        },
+        {
+          "method": "put",
+          "path": "/authenticator",
+          "apiHandler": "PutHandler"
+        },
+        {
+          "method": "del",
+          "path": "/authenticator",
+          "apiHandler": "DelHandler"
         }
       ]
     }
