@@ -10,6 +10,15 @@
     "port": "",
     "path": "/api/v1"
   },
+  "EMAIL": {
+    "host": "",
+    "username": "",
+    "password": "",
+    "issuer": "",
+    "text": {
+      "register": "welcome to register vaul.tech,please follow link"
+    }
+  },
   "CORS_WHITE_LIST": [],
   "POLICY_PATH": "vaultech-policy-store"
 }
