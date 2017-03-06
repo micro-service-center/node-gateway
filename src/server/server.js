@@ -43,8 +43,9 @@ class App {
             if (req.method.toLowerCase() == "options") {
                 res.writeHead(204, {'Content-Type': 'application/json'})
                 res.end()
+            }else{
+                requestHandler.handleRequest(req, res)
             }
-            requestHandler.handleRequest(req, res)
         }).listen(this.gateway_conf.PORT)
 
     }
