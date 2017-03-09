@@ -42,8 +42,8 @@ class App {
         this.httpServer = http.createServer((req, res) => {
           res.setHeader('Access-Control-Allow-Origin', '*')
 	  res.setHeader('Access-Control-Request-Method', '*')
-	  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET')
-          res.setHeader('Access-Control-Allow-Headers', '*')  
+          res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET,POST,PUT,PATCH')
+          res.setHeader("Access-Control-Allow-Headers", "Json-Web-Token, Origin, X-Requested-With, Content-Type, Accept, Authorization")
           if (req.method.toLowerCase() == "options") {
                 res.writeHead(204, {'Content-Type': 'application/json'})
                 res.end()
