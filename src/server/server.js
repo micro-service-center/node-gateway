@@ -40,7 +40,11 @@ class App {
         })
 
         this.httpServer = http.createServer((req, res) => {
-            if (req.method.toLowerCase() == "options") {
+          res.setHeader('Access-Control-Allow-Origin', '*')
+	  res.setHeader('Access-Control-Request-Method', '*')
+	  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET')
+          res.setHeader('Access-Control-Allow-Headers', '*')  
+          if (req.method.toLowerCase() == "options") {
                 res.writeHead(204, {'Content-Type': 'application/json'})
                 res.end()
             }else{
