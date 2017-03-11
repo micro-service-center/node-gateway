@@ -2,9 +2,6 @@ const http = require('http')
 const RequestHandler = require('./lib/RequestHandler')
 
 const RequestValidator = require('phoenix-validator').RobustRequestValidator
-const UserValidator = require('phoenix-validator').UserValidator
-
-const redis = require('redis')
 
 const PolicyFactory = require('cyanide-policy').PolicyFactory
 
@@ -13,9 +10,6 @@ class App {
         this.gateway_conf = opt.gateway_conf
         this.error_conf = opt.error_conf
         this.httpServer = null
-        this.redis = redis.createClient({url: opt.gateway_conf.REDIS_URL})
-        this.redis.on("error", (err) => console.log(err));
-
     }
 
     start() {
@@ -30,27 +24,26 @@ class App {
         }
         // Request Validator
         let requestValidator = new RequestValidator(validator_conf)
-        // User Validator
-        let userValidator = new UserValidator(validator_conf)
 
         // Request Handler
         let requestHandler = new RequestHandler({
-            requestValidator: requestValidator,
-            userValidator: userValidator
+            requestValidator: requestValidator
         })
 
         this.httpServer = http.createServer((req, res) => {
-          res.setHeader('Access-Control-Allow-Origin', '*')
-	  res.setHeader('Access-Control-Request-Method', '*')
-          res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET,POST,PUT,PATCH')
-          res.setHeader("Access-Control-Allow-Headers", "Json-Web-Token, Origin, X-Requested-With, Content-Type, Accept, Authorization")
-          if (req.method.toLowerCase() == "options") {
+            res.setHeader('Access-Control-Allow-Origin', '*')
+            res.setHeader('Access-Control-Request-Method', '*')
+            res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET,POST,PUT,PATCH')
+            res.setHeader("Access-Control-Allow-Headers", "Json-Web-Token, Origin, X-Requested-With, Content-Type, Accept, Authorization")
+            if (req.method.toLowerCase() == "options") {
                 res.writeHead(204, {'Content-Type': 'application/json'})
                 res.end()
-            }else{
+            } else {
                 requestHandler.handleRequest(req, res)
             }
-        }).listen(this.gateway_conf.PORT)
+        }).listen(this.gateway_conf.PORT, () => {
+            console.log(`Vaultech Gateway has listening on ${this.gateway_conf.PORT }`)
+        })
 
     }
 

@@ -1,6 +1,6 @@
-[submodule "conf"]
-	path = conf
-	url = git@github.com:BTCChina/phoenix-conf-store.git
-[submodule "policies"]
-	path = policies
-	url = git@github.com:BTCChina/phoenix-policy-store.git
+[submodule "vaultech-policy-store"]
+	path = vaultech-policy-store
+	url = git@github.com:cyanideio/vaultech-policy-store.git
+[submodule "vaultech-validator"]
+	path = vaultech-validator
+	url = git@github.com:cyanideio/vaultech-validator.git

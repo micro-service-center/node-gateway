@@ -17,7 +17,7 @@
     "phoenix-policy": "git+ssh://git@github.com:BTCChina/policy.git"
   },
   "devDependencies": {
-		"jsdoc": "*",
+    "jsdoc": "*",
     "chai": "*",
     "mocha": "*",
     "should": "*",
@@ -28,7 +28,7 @@
   },
   "scripts": {
     "build_docs": "jsdoc -c jsdoc.conf",
-    "start": "nodemon ./src/app.js",
+    "start": "NODE_ENV=dev nodemon ./src/app.js",
     "start_target": "nodemon ./src/utils/target.js",
     "test": "node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha",
     "naked_test": "node ./node_modules/mocha/bin/mocha"
