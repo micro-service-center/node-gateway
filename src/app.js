@@ -1,7 +1,7 @@
 const App = require('./server/server')
 
 const GATEWAY_CONFIG = require(`./config/gateway`)
-const ERROR_CONFIG = require(`../vaultech-policy-store/error.json`)
+const ERROR_CONFIG = require(`../tool-policy-store/error.json`)
 
 process.on('unhandledRejection', (reason, p) => {
 })

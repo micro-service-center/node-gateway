@@ -1,30 +1,31 @@
 {
-  "name": "phoenix-gateway",
+  "name": "tool-gateway",
   "version": "0.0.1",
-  "description": "API Gateway for Phoenix Project",
+  "description": "API Gateway for Tool Project",
   "main": "app.js",
   "dependencies": {
-    "http-proxy": "^1.15.2",
     "async": "*",
     "compression": "*",
     "cors": "*",
+    "cyanide-validator": "https://sensitiveMix@bitbucket.org/teambition/validator.git",
     "debug": "*",
-    "redis": "*",
     "errorhandler": "*",
-    "pm2": "*",
+    "http-proxy": "^1.15.2",
     "jwt-simple": "*",
-    "phoenix-validator": "git+ssh://git@github.com:BTCChina/phoenix-validator.git",
-    "phoenix-policy": "git+ssh://git@github.com:BTCChina/policy.git"
+    "pm2": "*",
+    "redis": "*",
+    "tool-policy": "https://sensitiveMix@bitbucket.org/teambition/policy.git",
+    "tool-validator": "https://sensitiveMix@bitbucket.org/teambition/validator.git"
   },
   "devDependencies": {
-    "jsdoc": "*",
     "chai": "*",
-    "mocha": "*",
-    "should": "*",
-    "supertest": "*",
-    "nock": "*",
+    "codecov.io": "*",
     "istanbul": "*",
-    "codecov.io": "*"
+    "jsdoc": "*",
+    "mocha": "*",
+    "nock": "*",
+    "should": "*",
+    "supertest": "*"
   },
   "scripts": {
     "build_docs": "jsdoc -c jsdoc.conf",
@@ -41,7 +42,7 @@
     "gateway",
     "nodejs"
   ],
-  "author": "Frank",
+  "author": "Jack Sun",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BTCChina/phoenix-gateway/issues"

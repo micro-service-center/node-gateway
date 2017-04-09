@@ -1,17 +1,17 @@
 {
   "PORT": 8080,
-  "POLICY_PATH": "vaultech-policy-store",
+  "POLICY_PATH": "tool-policy-store",
   "RATE_LIMIT_INTERVAL": 60000,
   "REDIS_URL": "redis://172.20.10.160:6379",
   "REDIS_TIMEOUT": 1000,
   "SERVICES": [
     {
-      "name": "vaultech_node",
-      "path": "/api",
+      "name": "deal",
+      "path": "/deal",
       "auth_header": false,
       "secret": null,
       "nodes": [
-        "http://127.0.0.1:3006"
+        "http://127.0.0.1:3000"
       ],
       "policy": {
         "RobustRequestValidator": [

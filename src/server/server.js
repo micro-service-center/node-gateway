@@ -1,9 +1,9 @@
 const http = require('http')
 const RequestHandler = require('./lib/RequestHandler')
 
-const RequestValidator = require('phoenix-validator').RobustRequestValidator
+const RequestValidator = require('../../tool-validator/RobustRequestValidator')
 
-const PolicyFactory = require('cyanide-policy').PolicyFactory
+const PolicyFactory = require('tool-policy').PolicyFactory
 
 class App {
     constructor(opt) {
@@ -42,7 +42,7 @@ class App {
                 requestHandler.handleRequest(req, res)
             }
         }).listen(this.gateway_conf.PORT, () => {
-            console.log(`Vaultech Gateway has listening on ${this.gateway_conf.PORT }`)
+            console.log(`Tool Gateway has listening on ${this.gateway_conf.PORT }`)
         })
 
     }

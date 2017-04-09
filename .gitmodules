@@ -1,6 +1,6 @@
-[submodule "vaultech-policy-store"]
-	path = vaultech-policy-store
-	url = git@github.com:cyanideio/vaultech-policy-store.git
-[submodule "vaultech-validator"]
-	path = vaultech-validator
-	url = git@github.com:cyanideio/vaultech-validator.git
+[submodule "tool-policy-store"]
+	path = tool-policy-store
+	url = https://sensitiveMix@bitbucket.org/teambition/tool-policy-store.git
+[submodule "tool-validator"]
+	path = tool-validator
+	url = https://sensitiveMix@bitbucket.org/teambition/tool-validator.git
