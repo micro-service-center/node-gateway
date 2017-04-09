@@ -36,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BTCChina/phoenix-gateway.git"
+    "url": "git@bitbucket.org:teambition/tool-gateway.git"
   },
   "keywords": [
     "gateway",
@@ -45,7 +45,7 @@
   "author": "Jack Sun",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BTCChina/phoenix-gateway/issues"
+    "url": "https://bitbucket.org/teambition/tool-gateway/issues"
   },
-  "homepage": "https://github.com/BTCChina/phoenix-gateway#readme"
+  "homepage": "https://bitbucket.org/teambition/tool-gateway#readme"
 }
