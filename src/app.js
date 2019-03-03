@@ -7,8 +7,8 @@ process.on('unhandledRejection', (reason, p) => {
 })
 
 let app = new App({
-    gateway_conf: GATEWAY_CONFIG,
-    error_conf: ERROR_CONFIG,
+  gateway_conf: GATEWAY_CONFIG,
+  error_conf: ERROR_CONFIG
 })
 
 app.start()
