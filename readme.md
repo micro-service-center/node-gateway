@@ -1,16 +1,16 @@
 ```
-   __                   __                           __                                  
-  / /_  ____   ____    / /          ____ _  ____ _  / /_  ___  _      __  ____ _   __  __
- / __/ / __ \ / __ \  / /  ______  / __ `/ / __ `/ / __/ / _ \| | /| / / / __ `/  / / / /
-/ /_  / /_/ // /_/ / / /  /_____/ / /_/ / / /_/ / / /_  /  __/| |/ |/ / / /_/ /  / /_/ / 
-\__/  \____/ \____/ /_/           \__, /  \__,_/  \__/  \___/ |__/|__/  \__,_/   \__, /  
-                                 /____/                                         /____/   
+                      __                                 __                                  
+   ____   ____   ____/ /  ___           ____ _  ____ _  / /_  ___  _      __  ____ _   __  __
+  / __ \ / __ \ / __  /  / _ \ ______  / __ `/ / __ `/ / __/ / _ \| | /| / / / __ `/  / / / /
+ / / / // /_/ // /_/ /  /  __//_____/ / /_/ / / /_/ / / /_  /  __/| |/ |/ / / /_/ /  / /_/ / 
+/_/ /_/ \____/ \__,_/   \___/         \__, /  \__,_/  \__/  \___/ |__/|__/  \__,_/   \__, /  
+                                     /____/                                         /____/   
 
 ```
 
-# Tool Gateway
+# Node Gateway
 
-Tool-gateway is a simple API Gateway, which performs the following tasks:
+node-gateway is a simple API Gateway, which performs the following tasks:
 - rejects invalid requests
 - rejects invalid users
 - redirects traffic to registered services

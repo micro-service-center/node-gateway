@@ -1,7 +1,7 @@
 {
-  "name": "tool-gateway",
+  "name": "node-gateway",
   "version": "0.0.1",
-  "description": "API Gateway for Tool Project",
+  "description": "API Gateway for Node Project",
   "main": "app.js",
   "dependencies": {
     "async": "*",
